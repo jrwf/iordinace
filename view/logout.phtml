@@ -1,0 +1,10 @@
+<div class="col-md-6">
+  <?php
+    if( $_GET['logout'] == 'yes' ) {
+      session_destroy();
+      //header('Location: login');
+      //echo '<p class="hlaska">Teď jste odhlášená.</p>';
+      echo '<a href="login">Prihlasit se</a>';
+    }
+  ?>
+</div>

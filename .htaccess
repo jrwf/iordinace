@@ -1,0 +1,17 @@
+# .htaccess soubor nastavení Apache pro DevbookMVC
+#Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+# front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz)$ index.php [L]
+
+AddType application/x-httpd-php .php .phtml
+
+#Nastavení https pro server (Ebola)
+#RewriteCond %{HTTPS} !on
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#Header set Strict-Transport-Security "max-age=15768000" env=HTTPS
