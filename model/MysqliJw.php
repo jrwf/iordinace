@@ -5,7 +5,7 @@ class MysqliJw {
   public function spojeni() {
 
     if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-      $mysqli = new mysqli('localhost', 'root', 'heslo', 'iordinace');
+      $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
       $mysqli->set_charset('utf8');
     }
      //Ebola

@@ -1,96 +1,144 @@
+<style>
+    .mudr {
+        width: 350px;
+        background-color: #efefef;
+        padding: 0px 0 15px 30px;
+        margin-bottom: 20px;
+    }
+    @media (max-width: 370px) {
+        .mudr {
+            padding: 15px;
+            width: 250px;
+        }
+    }
+    .dovolena-text {
+        max-width: 750px;
+        margin: 0 auto 50px auto;
+        font-weight: bold;
+    }
+    @media (max-width: 1050px) {
+        .dovolena-text {
+            width: 85%;
+        }
+    }
+</style>
 <div class="home-page">
 
+    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
+    <div style="display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap">
+        <div class="mudr">
+            <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">14. 7. - 23. 7. 2021</h2>
+            <p><strong>Zastupuje MUDr. Monika Ilíková</strong></p>
+            <p>(Ordinaci má v patře nad námi, tel. 571110537)</p>
+        </div>
+        <div class="mudr">
+            <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">6. 8. - 13. 8. 2021</h2>
+            <p><strong>Zastupuje MUDr. Eva Jašová</strong></p>
+            <p>(Gahurova 77, tel. 577220435)</p>
+        </div>
+    </div>
 
-<?php
+    <div class="dovolena-text">
+        <p>Obě zastupující lékařky budou k dispozici pro akutne němocné děti. Veškerou preventivní (očkování) a administrativní činnost (potvrzení na tábory a brigády, výpisy z dokumentace,...) si zajistěte včas u nás!</p>
+        <p>Zastupující lékař není povinen a ani oprávněn toto dělat.</p>
+    </div>
 
-while ($uzivatel = $zobrazit->fetch_assoc()) {
-  $publikovat = $uzivatel['zobrazit'];
-}
 
-if($publikovat == 'ano') {
-if(!empty($aktualita)) {
-  //echo '<div class="row">';
-    echo '<div class="home-aktualita col-md-12">';
-      echo '<div class="home-aktualita-in">';
-
-        echo '<h2>Důležité informace související s GDPR:</h2>';
-        echo '<ul>';
-        echo '<li>Telefonické informace ohledně zdravotního stavu dítěte a výsledků vyšetření  jsou sdělovány pouze rodičům - zákonným zástupcům dítěte - po identifikaci heslem, které bude osobně sděleno v ordinaci.</li>';	
-        echo '<li>Zasílání lékařských zpráv nebo výsledků vyšetření  je možné jen zabezpečenou komunikací přes naše internetové stránky. Bližší informace podáme v ordinaci.</li>';
-        echo '</ul>';
-
-        foreach ($aktualita as $value) {
-          echo '<h2>' . $value['nadpis'] . '</h2>';
-          echo '<p>' . $value['obsah'] . '</p>';
-        }
-    if(isset($_SESSION['logged_user'])) {
-        echo '<p><a href="addaktualita">Upravit</a>';
+    <?php
+    while ($uzivatel = $zobrazit->fetch_assoc()) {
+        $publikovat = $uzivatel['zobrazit'];
     }
-      echo '</div>';
-    echo '</div>';
-  //echo '</div>';
-} else {
-    echo '';
-}
 
-}
+    if ($publikovat == 'ano') {
+        if (!empty($aktualita)) {
+            //echo '<div class="row">';
+            echo '<div class="home-aktualita col-md-12">';
+            echo '<div class="home-aktualita-in">';
+
+//            echo '<h2>Důležité informace související s GDPR:</h2>';
+//            echo '<ul>';
+//            echo '<li>Telefonické informace ohledně zdravotního stavu dítěte a výsledků vyšetření  jsou sdělovány pouze rodičům - zákonným zástupcům dítěte - po identifikaci heslem, které bude osobně sděleno v ordinaci.</li>';
+//            echo '<li>Zasílání lékařských zpráv nebo výsledků vyšetření  je možné jen zabezpečenou komunikací přes naše internetové stránky. Bližší informace podáme v ordinaci.</li>';
+//            echo '</ul>';
+
+            foreach ($aktualita as $value) {
+                echo '<h2>' . $value['nadpis'] . '</h2>';
+                echo '<p>' . $value['obsah'] . '</p>';
+            }
+            if (isset($_SESSION['logged_user'])) {
+                echo '<p><a href="addaktualita">Upravit</a>';
+            }
+            echo '</div>';
+            echo '</div>';
+            //echo '</div>';
+        } else {
+            echo '';
+        }
+
+    }
 
 
+    ?>
 
-?>
-
-  <div class="persons row">
-    <div class="osoba col-sm-4 col-md-4">
-      <img src="../images/home-bacova.jpg" alt="" class="img-responsive" />
-      <h3>MUDr. Miluše Bačová</h3>
-      <p>Narozena 1943, atestace z dětského lékařství 1971, bohatá praxe jak v nemocniční tak ambulantní sféře.</p>
+    <div class="persons row">
+        <div class="osoba col-sm-4 col-md-4">
+            <img src="../images/home-bacova.jpg" alt="" class="img-responsive"/>
+            <h3>MUDr. Miluše Bačová</h3>
+            <p>Narozena 1943, atestace z dětského lékařství 1971, bohatá praxe jak v nemocniční tak ambulantní
+                sféře.</p>
+        </div>
+        <div class="osoba col-sm-4 col-md-4">
+            <img src="../images/home-precechtelova.jpg" alt="" class="img-responsive"/>
+            <h3>MUDr. Martina Přecechtělová</h3>
+            <p>Narozena 1972, atestace z dětského lékařství 1999.</p>
+        </div>
+        <div class="osoba col-sm-4 col-md-4">
+            <img src="../images/home-hola.jpg" alt="" class="img-responsive"/>
+            <h3>Renata Holá</h3>
+            <p>Narozena 1975, akreditovaná dětská sestra.</p>
+        </div>
     </div>
-    <div class="osoba col-sm-4 col-md-4">
-      <img src="../images/home-precechtelova.jpg" alt="" class="img-responsive" />
-      <h3>MUDr. Martina Přecechtělová</h3>
-      <p>Narozena 1972, atestace z dětského lékařství 1999.</p>
+
+    <div class="home-introduction row">
+
+        <div class="introduction-list col-sm-6 col-md-6">
+            <div class="item-text">
+                <div class="number">1.</div>
+                <p>Děti mladší 15 let musí být v doprovodu alespoň jednoho zákonného zástupce, který svůj souhlas s
+                    vyšetřením a následnou péčí písemně zaznamená do zdravotnické dokumentace.</p>
+            </div>
+            <div class="item-text">
+                <div class="number">2.</div>
+                <p>Pokud se bude jednat o poskytnutí zdravotní péče, která může podstatným způsobem ovlivnit zdraví
+                    pacienta, je třeba písemného souhlasu obou rodičů.</p>
+            </div>
+            <div class="item-text">
+                <div class="number">3.</div>
+                <p>Prarodiče nemají postavení zákonného zástupce, tedy nemohou rozhodovat o udělení souhlasu či
+                    nesouhlasu se zdravotní péčí. V úvahu přichází udělit ze strany rodiče plnou moc prarodiči a ten
+                    potom uděluje souhlas k výkonům namísto rodiče.</p>
+            </div>
+        </div>
+
+        <div class="standards col-sm-6 col-md-6">
+            <div class="item-text">
+                <div class="number">4.</div>
+                <p>Děti starší 15 let musí mít od rodičů udělen písemný souhlas k tomu, aby jim mohla být poskytována
+                    zdravotní péče bez doprovodu zákonného zástupce. Informovaný souhlas uděluje dítě samo.</p>
+            </div>
+            <div class="item-text">
+                <div class="number">5.</div>
+                <p>U veškerého nepovinného očkování je třeba písemného souhlasu obou rodičů eventuelně i nezletilého nad
+                    14 let v písemné formě.</p>
+            </div>
+            <!--<ul class="home-standardy">
+              <li><a href="preventivni-prohlidky">Preventivní prohlídky</a></li>
+              <li><a href="pro-budouci-maminky">Pro budoucí maminky</a></li>
+              <li><a href="ockovani">Očkování</a></li>
+              <li><a href="nadstandardni-sluzby">Nadstandardní služby</a></li>
+            </ul>-->
+        </div>
+
     </div>
-    <div class="osoba col-sm-4 col-md-4">
-      <img src="../images/home-hola.jpg" alt="" class="img-responsive" />
-      <h3>Renata Holá</h3>
-      <p>Narozena 1975, akreditovaná dětská sestra.</p>
-    </div>
-  </div>
-
-  <div class="home-introduction row">
-
-      <div class="introduction-list col-sm-6 col-md-6">
-        <div class="item-text">
-          <div class="number">1.</div>
-          <p>Děti mladší 15 let musí být v doprovodu alespoň jednoho zákonného zástupce, který svůj souhlas s vyšetřením a následnou péčí písemně zaznamená do zdravotnické dokumentace.</p>
-        </div>
-        <div class="item-text">
-          <div class="number">2.</div>
-          <p>Pokud se bude jednat o poskytnutí zdravotní péče, která může podstatným způsobem ovlivnit zdraví pacienta, je třeba písemného souhlasu obou rodičů.</p>
-        </div>
-        <div class="item-text">
-          <div class="number">3.</div>
-          <p>Prarodiče nemají postavení zákonného zástupce, tedy nemohou rozhodovat o udělení souhlasu či nesouhlasu se zdravotní péčí. V úvahu přichází udělit ze strany rodiče plnou moc prarodiči a ten potom uděluje souhlas k výkonům namísto rodiče.</p>
-        </div>
-      </div>
-
-      <div class="standards col-sm-6 col-md-6">
-        <div class="item-text">
-          <div class="number">4.</div>
-          <p>Děti starší 15 let musí mít od rodičů udělen písemný souhlas k tomu, aby jim mohla být poskytována zdravotní péče bez doprovodu zákonného zástupce. Informovaný souhlas uděluje dítě samo.</p>
-        </div>
-        <div class="item-text">
-          <div class="number">5.</div>
-          <p>U veškerého nepovinného očkování je třeba písemného souhlasu obou rodičů eventuelně i nezletilého nad 14 let v písemné formě.</p>
-        </div>
-        <!--<ul class="home-standardy">
-          <li><a href="preventivni-prohlidky">Preventivní prohlídky</a></li>
-          <li><a href="pro-budouci-maminky">Pro budoucí maminky</a></li>
-          <li><a href="ockovani">Očkování</a></li>
-          <li><a href="nadstandardni-sluzby">Nadstandardní služby</a></li>
-        </ul>-->
-      </div>
-
-  </div>
 
 </div>
