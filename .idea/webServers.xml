@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dfbce8f3-c580-4d4e-8856-4641e3dddd65" name="iordinace" url="http://localhost">
+        <fileTransfer rootFolder="/www" host="ftp.iordinace.cz" port="21">
+          <advancedOptions>
+            <advancedOptions passiveMode="true" showHiddenFiles="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
