@@ -16,6 +16,10 @@ class Addaktualita
             } // Ebola
             elseif ($_SERVER['SERVER_ADDR'] == '95.168.206.203') {
                 $mysqli = new mysqli('mysql3.ebola.cz', 'iordinacecz_user', '8WK4tXwGP0Cl', 'iordinacecz_sql');
+            } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
+                // iordinace.jw.cz
+                $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
+                $mysqli->set_charset('utf8');
             }
 
             //$mysqli = new mysqli('localhost', 'root', 'heslo', 'iordinace');
@@ -39,7 +43,7 @@ class Addaktualita
     {
         //$mysqli = new mysqli('localhost', 'root', 'heslo', 'iordinace');
         //$mysqli->set_charset('utf8');
-        if ($_SERVER['SERVER_NAME'] == '127.0.1.1') {
+        if ($_SERVER['SERVER_NAME'] == 'iordinace.loc') {
             $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
             $mysqli->set_charset('utf8');
         } //Ebola
@@ -52,6 +56,10 @@ class Addaktualita
         } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.jw.cz') {
             // iordinace.jw.cz
             $mysqli = new mysqli('127.0.0.1', '8uecqqoi', 'Tt4Xh\vm~r', 'iOrdinace', 3311);
+            $mysqli->set_charset('utf8');
+        } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
+            // iordinace.jw.cz
+            $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
             $mysqli->set_charset('utf8');
         }
 
@@ -67,7 +75,7 @@ class Addaktualita
         //$mysqli = new mysqli('localhost', 'root', 'heslo', 'iordinace');
         //$mysqli->set_charset('utf8');
 
-        if ($_SERVER['SERVER_NAME'] == '127.0.0.1') {
+        if ($_SERVER['SERVER_NAME'] == 'iordinace.loc') {
             $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
             $mysqli->set_charset('utf8');
         } elseif ($_SERVER['SERVER_NAME'] == '95.168.206.196') {
@@ -81,8 +89,9 @@ class Addaktualita
             // iordinace.jw.cz
             $mysqli = new mysqli('127.0.0.1', '8uecqqoi', 'Tt4Xh\vm~r', 'iOrdinace', 3311);
             $mysqli->set_charset('utf8');
-        } else {
-            $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
+        } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
+            // iordinace.cz
+            $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
             $mysqli->set_charset('utf8');
         }
 

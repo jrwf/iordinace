@@ -17,6 +17,10 @@ class MysqliJw
             // iordinace.jw.cz
             $mysqli = new mysqli('127.0.0.1', '8uecqqoi', 'Tt4Xh\vm~r', 'iOrdinace');
             $mysqli->set_charset('utf8');
+        } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
+            // iordinace.jw.cz
+            $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
+            $mysqli->set_charset('utf8');
         }
 
         $mysqli->set_charset('utf8');
