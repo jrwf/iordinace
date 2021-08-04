@@ -1,8 +1,11 @@
 <?php
 
-    if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+    if ($_SERVER['SERVER_NAME'] == 'iordinace.loc') {
       $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
       $mysqli->set_charset('utf8');
+    } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.jw.cz') {
+        $mysqli = new mysqli('127.0.0.1', '8uecqqoi', 'Tt4Xh\vm~r', 'iOrdinace');
+        $mysqli->set_charset('utf8');
     }
      //Ebola
 //    elseif ($_SERVER['SERVER_ADDR'] == '95.168.206.196') {
