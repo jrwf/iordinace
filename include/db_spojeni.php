@@ -1,5 +1,4 @@
 <?php
-var_dump($_SERVER['SERVER_NAME']);
     if ($_SERVER['SERVER_NAME'] == 'iordinace.loc') {
       $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
       $mysqli->set_charset('utf8');
