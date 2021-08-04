@@ -17,10 +17,6 @@ class Addaktualita
             elseif ($_SERVER['SERVER_ADDR'] == '95.168.206.203') {
                 $mysqli = new mysqli('mysql3.ebola.cz', 'iordinacecz_user', '8WK4tXwGP0Cl', 'iordinacecz_sql');
             } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
-                // iordinace.jw.cz
-                $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
-                $mysqli->set_charset('utf8');
-            } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
                 // iordinace.cz
                 $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
                 $mysqli->set_charset('utf8');
@@ -66,8 +62,6 @@ class Addaktualita
             $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
             $mysqli->set_charset('utf8');
         }
-
-        var_dump($_SERVER['SERVER_NAME']);
 
         if ($mysqli->connect_error) {
             die('Nepodařilo se připojit k MySQL serveru - aktualita2 (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
