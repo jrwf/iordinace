@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 // Nastavení interního kódování pro funkce pro práci s řetězc
 mb_internal_encoding("UTF-8");
 
