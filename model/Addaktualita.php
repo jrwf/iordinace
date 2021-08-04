@@ -39,7 +39,7 @@ class Addaktualita
     {
         //$mysqli = new mysqli('localhost', 'root', 'heslo', 'iordinace');
         //$mysqli->set_charset('utf8');
-        if ($_SERVER['SERVER_NAME'] == '127.0.1.1') {
+        if ($_SERVER['SERVER_NAME'] == 'iordinace.loc') {
             $mysqli = new mysqli('localhost', 'root', '9#wB$7ppGgjC4g', 'iordinace');
             $mysqli->set_charset('utf8');
         } //Ebola
