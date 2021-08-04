@@ -63,6 +63,8 @@ class Addaktualita
             $mysqli->set_charset('utf8');
         }
 
+        var_dump($_SERVER['SERVER_NAME']);
+
         if ($mysqli->connect_error) {
             die('Nepodařilo se připojit k MySQL serveru - aktualita2 (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
         }
