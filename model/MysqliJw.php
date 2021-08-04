@@ -19,7 +19,7 @@ class MysqliJw {
     }
 
     if ($mysqli->connect_error) {
-      die('Nepodařilo se připojit k MySQL serveru (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
+      die('Nepodařilo se připojit k MySQL serveru - mysqlli (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
     }
 
     echo 'Připojení proběhlo úspěšně ' . $mysqli->host_info . "\n";
