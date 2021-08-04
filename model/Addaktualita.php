@@ -98,7 +98,7 @@ class Addaktualita
         }
 
         if ($mysqli->connect_error) {
-            die('Nepodařilo se připojit k MySQL serveru - aktualita 3 (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
+            die('Nepodařilo se připojit k MySQL serveru - aktualita 31 (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
         }
         $data = $mysqli->query("select * from aktualita where idaktualita = 1");
         return $data;
