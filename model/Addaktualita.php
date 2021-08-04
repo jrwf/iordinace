@@ -24,7 +24,7 @@ class Addaktualita
       //$mysqli->set_charset('utf8');
 
       if ($mysqli->connect_error) {
-        die('Nepodařilo se připojit k MySQL serveru (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
+        die('Nepodařilo se připojit k MySQL serveru - aktualita (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
       }
       $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
       $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
