@@ -89,7 +89,7 @@ class Addaktualita
             // iordinace.jw.cz
             $mysqli = new mysqli('127.0.0.1', '8uecqqoi', 'Tt4Xh\vm~r', 'iOrdinace', 3311);
             $mysqli->set_charset('utf8');
-        } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz') {
+        } elseif ($_SERVER['SERVER_NAME'] === 'iordinace.cz' || $_SERVER['SERVER_NAME'] === 'www.iordinace.cz') {
             // iordinace.cz
             $mysqli = new mysqli('127.0.0.1', 'vbo3b73x', 'bey*XFC5ewk3yhe8zck', 'iOrdinaceProdu', 3311);
             $mysqli->set_charset('utf8');
