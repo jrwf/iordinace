@@ -23,11 +23,11 @@ class KontaktKontroler extends Kontroler
                     if (isset($_POST['rok']) && ($_POST['rok'] === date("Y"))) {
                         $odesilacEmailu = new OdesilacEmailu();
                         $odesilacEmailu->odesli("jiri.wolf@jw.cz", "Email z webu", $_POST['zprava'], $_POST['email']);
-//                        $odesilacEmailu->odesli("mprecechtelova@seznam.cz", "E-mail z webových stránek.", $_POST['zprava'], $_POST['email']);
-//                        $odesilacEmailu->odesli("precechtelova@iordinace.cz", "E-mail z webových stránek.", $_POST['zprava'], $_POST['email']);
+                        $odesilacEmailu->odesli("mprecechtelova@seznam.cz", "E-mail z webových stránek.", $_POST['zprava'], $_POST['email']);
+                        $odesilacEmailu->odesli("precechtelova@iordinace.cz", "E-mail z webových stránek.", $_POST['zprava'], $_POST['email']);
                         $zprava = 'Vaše zpráva byla odeslána.';
-                        header('Location: http://iordinace.loc/kontakt');
-//                        header('Location: https://www.iordinace.cz/kontakt');
+//                        header('Location: http://iordinace.loc/kontakt');
+                        header('Location: https://www.iordinace.cz/kontakt');
                     } else {
                         $zprava = 'Musite zadat aktuální rok.';
                     }
