@@ -50,5 +50,6 @@ class KontaktKontroler extends Kontroler
         }
         $this->data['hlaska'] = $zprava;
         $this->pohled = 'kontakt';
+        header('Location: https://iordinace.jw.cz/kontakt');
     }
 }
