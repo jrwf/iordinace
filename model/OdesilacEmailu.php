@@ -19,7 +19,7 @@ class OdesilacEmailu
         $hlavicka = "From: " . $od;
         $hlavicka .= "\nMIME-Version: 1.0\n";
         $hlavicka .= "Content-Type: text/html; charset=\"utf-8\"\n";
-        return mb_send_mail($komu, $predmet, $zprava);
-//            return mb_send_mail($komu, $predmet, $zprava, $hlavicka);
+//        return mb_send_mail($komu, $predmet, $zprava);
+        return mb_send_mail($komu, $predmet, $zprava, $hlavicka);
     }
 }
