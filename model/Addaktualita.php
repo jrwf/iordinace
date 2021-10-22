@@ -29,13 +29,15 @@ class Addaktualita
                 die('Nepodařilo se připojit k MySQL serveru - aktualita (' . $mysqli->connect_errno . ')' . $mysqli->connect_error);
             }
             $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
+            $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
             $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
             $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
 
             //$nadpis = 'letadlo';
             //$obsah = 'motorka';
 
-            $mysqli->query("update aktualita set nadpis = '$nadpis', obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = 1");
+            $mysqli->query("update aktualita set nadpis = '$nadpis', perex = '$perex' , obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = 1");
+//            $mysqli->query("update aktualita set nadpis = '$nadpis', obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = 1");
         }
     }
 

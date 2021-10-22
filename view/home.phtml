@@ -24,10 +24,15 @@
     table {
         width: 100%;
     }
+
+    .aktualita-perex {
+        margin-top: 20px;
+        margin-bottom: 70px;
+    }
 </style>
 <div class="home-page">
 
-    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
+<!--    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
     <div style="display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap">
         <div class="mudr">
             <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">14. 7. - 23. 7. 2021</h2>
@@ -40,12 +45,11 @@
             <p>(Gahurova 77, tel. 577220435)</p>
         </div>
     </div>
-
     <div class="dovolena-text">
         <p>Obě zastupující lékařky budou k dispozici pro akutne němocné děti. Veškerou preventivní (očkování) a administrativní činnost (potvrzení na tábory a brigády, výpisy z dokumentace,...) si zajistěte včas u nás!</p>
         <p>Zastupující lékař není povinen a ani oprávněn toto dělat.</p>
     </div>
-
+-->
 
     <?php
     while ($uzivatel = $zobrazit->fetch_assoc()) {
@@ -65,8 +69,18 @@
 //            echo '</ul>';
 
             foreach ($aktualita as $value) {
-                echo '<h2>' . $value['nadpis'] . '</h2>';
-                echo '<p>' . $value['obsah'] . '</p>';
+                // Nadpis
+                if (isset($value['nadpis']) && !empty($value['nadpis'])) {
+                    echo '<h2>' . $value['nadpis'] . '</h2>';
+                }
+                // Perex
+                if (isset($value['perex']) && !empty($value['perex'])) {
+                    echo '<div class="aktualita-perex">' . $value['perex'] . '</div>';
+                }
+                // Obsah
+                if (isset($value['obsah']) && !empty($value['obsah'])) {
+                    echo '<div class="aktualita-content">' . $value['obsah'] . '</div>';
+                }
             }
             if (isset($_SESSION['logged_user'])) {
                 echo '<p><a href="addaktualita">Upravit</a>';
