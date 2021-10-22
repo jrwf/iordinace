@@ -1,20 +1,21 @@
-<?php include 'include/db_spojeni.php';  ?>
+<?php include 'include/db_spojeni.php'; ?>
 <!DOCTYPE html>
 <html class="no-js" lang="cs-cz">
-  <head>
-    <base href="/localhost" />
-    <meta charset="UTF-8" />
+<head>
+    <base href="/localhost"/>
+    <meta charset="UTF-8"/>
     <title>Medipraktik Zlín s.r.o. - <?= $titulek ?></title>
     <!-- <meta name="viewport" content="width=device-width"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="<?= $popis ?>" />
-    <meta name="keywords" content="<?= $klicova_slova ?>" />
+    <meta name="description" content="<?= $popis ?>"/>
+    <meta name="keywords" content="<?= $klicova_slova ?>"/>
     <meta http-equiv="Cache-control" content="public">
 
     <script src="../scripts/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="../scripts/modernizr.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"
+            charset="utf-8"></script>
     <script src="../scripts/main.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -23,167 +24,194 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Latest compiled and minified JavaScript -->
 
-    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="styles/style.css" type="text/css"/>
 
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700italic,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700italic,700&subset=latin,cyrillic-ext,cyrillic'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,700italic'
+          rel='stylesheet' type='text/css'>
 
-    <!-- test -->
-  </head>
+    {* reCaptcha*}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfFSDUbAAAAAH1nTLQ-WKzM6CIYll32sF8vHoA4"></script>
+</head>
 
-  <body>
-  <!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+<body>
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
 
-  <header class="container">
-    <div class="col-md-3 pull-left"><div class="logo">iOrdinace.cz</div></div>  
-    <div class="col-md-3 pull-right">
-      <div class="quick-contact">
-        <p><strong>Mobil: </strong>+420 123 456 789<br /><strong>E-mail: </strong><a href="mailto:precechtelova@iordinace.cz">precechtelova@iordinace.cz</a></p>
-      </div>
+<header class="container">
+    <div class="col-md-3 pull-left">
+        <div class="logo">iOrdinace.cz</div>
     </div>
-  </header>
+    <div class="col-md-3 pull-right">
+        <div class="quick-contact">
+            <p><strong>Mobil: </strong>+420 123 456 789<br/><strong>E-mail: </strong><a
+                        href="mailto:precechtelova@iordinace.cz">precechtelova@iordinace.cz</a></p>
+        </div>
+    </div>
+</header>
 
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="home"><img src="../images/home.png" alt="home" /></a>
-      </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home"><img src="../images/home.png" alt="home"/></a>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-          <li><a href="preventivni-prohlidky">Prevenitivní prohlídky</a></li>
-          <li><a href="pro-budouci-maminky">Pro budoucí<br />maminky</a></li>
-          <li><a href="ockovani">Očkování</a></li>
-          <li><a href="nadstandardni-sluzby">Nadstandardní služby</a></li>
-          <li><a href="smluvni-pojistovny">Pojišťovny</a></li>
-          <li><a href="odkazy">Odkazy</a></li>
-          <!--<li><a href="#">Objednání</a></li>-->
-          <li><a href="kontakt">Kontakt</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                <li><a href="preventivni-prohlidky">Prevenitivní prohlídky</a></li>
+                <li><a href="pro-budouci-maminky">Pro budoucí<br/>maminky</a></li>
+                <li><a href="ockovani">Očkování</a></li>
+                <li><a href="nadstandardni-sluzby">Nadstandardní služby</a></li>
+                <li><a href="smluvni-pojistovny">Pojišťovny</a></li>
+                <li><a href="odkazy">Odkazy</a></li>
+                <!--<li><a href="#">Objednání</a></li>-->
+                <li><a href="kontakt">Kontakt</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
-  </nav>
+</nav>
 
-  <div class="content container">
+<div class="content container">
 
     <main class="row">
         <article>
-          <?php 
+            <?php
             // vložení aktuálního pohledu do šablony
             //$this->kontroler->vypisPohled();
-          ?>
+            ?>
         </article>
     </main>
 
     <div class="page-kontakt row">
-      <div class="col-md-6">
-        <div class="address">
-          <h3>Kontaktní informace</h3>
-          <p><strong>Kotěrova 5529<br />760 01 Zlín</strong><br />(Bezbariérový vstup, výtah, pakoviště)</p>
-          <p><strong>Telefon:</strong> +420 732 941 611<br />
-          <strong>Mobil:</strong> +420 604 286 854<br />
-          <strong>E-mail:</strong> <a href="mailto:precechtelova@iordinace.cz">precechtelova@iordinace.cz</a></p>
-          <!--<strong>E-mail:</strong> mprecechtelova@seznam.cz</p> -->
+        <div class="col-md-6">
+            <div class="address">
+                <h3>Kontaktní informace</h3>
+                <p><strong>Kotěrova 5529<br/>760 01 Zlín</strong><br/>(Bezbariérový vstup, výtah, pakoviště)</p>
+                <p><strong>Telefon:</strong> +420 732 941 611<br/>
+                    <strong>Mobil:</strong> +420 604 286 854<br/>
+                    <strong>E-mail:</strong> <a href="mailto:precechtelova@iordinace.cz">precechtelova@iordinace.cz</a>
+                </p>
+                <!--<strong>E-mail:</strong> mprecechtelova@seznam.cz</p> -->
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="surgery-hours">
-          <h3>Ordninační hodiny</h3>
-          <table>
-            <tr>
-              <td><strong>Pondělí</strong></td>
-              <td>7:00 - 11:00</td>
-              <td>11:30 - 13:30 pro pozvané</td>
-            </tr>
-            <tr>
-              <td><strong>Úterý</strong></td>
-              <td>7:00 - 11:00</td>
-              <td>11:30 - 13:30 pro pozvané</td>
-            </tr>
-            <tr>
-              <td><strong>Středa</strong></td>
-              <td>7:00 - 11:00</td>
-              <td>11:00 - 13:00 poradna</td>
-            </tr>
-            <tr>
-              <td><strong>Čtvrtek</strong></td>
-              <td>7:00 - 11:00</td>
-              <td>11:30 - 15:00 poradna</td>
-            </tr>
-            <tr>
-              <td><strong>Pátek</strong></td>
-              <td>7:00 - 11:00</td>
-              <td>11:30 - 13:30 poradna</td>
-            </tr>
-          </table>
+        <div class="col-md-6">
+            <div class="surgery-hours">
+                <h3>Ordninační hodiny</h3>
+                <table>
+                    <tr>
+                        <td><strong>Pondělí</strong></td>
+                        <td>7:00 - 11:00</td>
+                        <td>11:30 - 13:30 pro pozvané</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Úterý</strong></td>
+                        <td>7:00 - 11:00</td>
+                        <td>11:30 - 13:30 pro pozvané</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Středa</strong></td>
+                        <td>7:00 - 11:00</td>
+                        <td>11:00 - 13:00 poradna</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Čtvrtek</strong></td>
+                        <td>7:00 - 11:00</td>
+                        <td>11:30 - 15:00 poradna</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pátek</strong></td>
+                        <td>7:00 - 11:00</td>
+                        <td>11:30 - 13:30 poradna</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
 
-  </div>
+</div>
 
-  <div class="gallery-page">
+<div class="gallery-page">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Naše ordinace</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Naše ordinace</h3>
+            </div>
         </div>
-      </div>
-      <div class="row images-row">
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <a href="../images/1.jpg"  data-toggle="lightbox"><img src="../images/1.jpg" alt="" class="img-responsive" /></a>
+        <div class="row images-row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <a href="../images/1.jpg" data-toggle="lightbox"><img src="../images/1.jpg" alt=""
+                                                                      class="img-responsive"/></a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
         </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
+        <div class="row images-row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <img src="../images/1.jpg" alt="" class="img-responsive"/>
+            </div>
         </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-      </div>
-      <div class="row images-row">
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-        <div class="col-xs-6 col-sm-3 col-md-3">
-          <img src="../images/1.jpg" alt="" class="img-responsive" />
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <footer class="footer container">
+<footer class="footer container">
     <p>Copyright 2015 - iordinace.cz | Webové stránky, webdesing, CMS - <a href="https://www.jw.cz">www.jw.cz</a>
-  </footer>
+</footer>
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-e.src='https://www.google-analytics.com/analytics.js';
-r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-XXXXX-X');ga('send','pageview');
-</script>
+    (function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function () {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
 
-  </body>
+    //Google reCaptcha
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LfFSDUbAAAAAH1nTLQ-WKzM6CIYll32sF8vHoA4', { action : 'submit'}).then(function (token) {
+            // Add your logic to submit to your backend server here.
+            document.getElementById('tokenId').value = token;
+        });
+    });
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+</body>
 </html>

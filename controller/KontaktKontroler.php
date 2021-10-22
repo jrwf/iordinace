@@ -18,6 +18,15 @@ class KontaktKontroler extends Kontroler
         $zprava = '';
 
         if ($_POST) {
+            // reCaptcha
+            $secretKey = '6LfFSDUbAAAAAEvkPSZAE8bfLtswqv0eId2fTIm9';
+            $token = $_POST['tokenId'];
+            if ($token) {
+                $data = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $token);
+            }
+            $result = json_decode($data);
+            var_dump($result);
+
             if (isset($_POST["email"]) && !empty($_POST['email'])) {
                 if (isset($_POST['zprava']) && !empty($_POST['zprava'])) {
                     if (isset($_POST['rok']) && ($_POST['rok'] === date("Y"))) {
