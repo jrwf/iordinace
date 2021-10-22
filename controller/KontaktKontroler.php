@@ -27,7 +27,8 @@ class KontaktKontroler extends Kontroler
 //                        $odesilacEmailu->odesli("precechtelova@iordinace.cz", "E-mail z webových stránek.", $_POST['zprava'], $_POST['email']);
                         $zprava = 'Vaše zpráva byla odeslána.';
 //                        header('Location: http://iordinace.loc/kontakt');
-                        header('Location: https://www.iordinace.cz/kontakt');
+//                        header('Location: https://www.iordinace.cz/kontakt');
+                        header('Location: https://www.iordinace.jw.cz/kontakt');
                     } else {
                         $zprava = 'Musite zadat aktuální rok.';
                     }
