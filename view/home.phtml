@@ -5,60 +5,71 @@
         padding: 0px 0 15px 30px;
         margin-bottom: 20px;
     }
+
     @media (max-width: 370px) {
         .mudr {
             padding: 15px;
             width: 250px;
         }
     }
+
     .dovolena-text {
         max-width: 750px;
         margin: 0 auto 50px auto;
         font-weight: bold;
     }
+
     @media (max-width: 1050px) {
         .dovolena-text {
             width: 85%;
         }
     }
+
     table {
         width: 100%;
     }
 
     .aktualita-perex {
         margin-top: 20px;
+        margin-bottom: 30px;
+        border-left: 25px solid #e872c0;
+        padding: 0 0 0 40px;
+    }
+
+    .aktualita-perex-line {
+        border-bottom: 1px solid #48c1e0;
         margin-bottom: 70px;
     }
 </style>
 <div class="home-page">
 
-<!--    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
-    <div style="display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap">
-        <div class="mudr">
-            <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">14. 7. - 23. 7. 2021</h2>
-            <p><strong>Zastupuje MUDr. Monika Ilíková</strong></p>
-            <p>(Ordinaci má v patře nad námi, tel. 571110537)</p>
+    <!--    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
+        <div style="display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap">
+            <div class="mudr">
+                <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">14. 7. - 23. 7. 2021</h2>
+                <p><strong>Zastupuje MUDr. Monika Ilíková</strong></p>
+                <p>(Ordinaci má v patře nad námi, tel. 571110537)</p>
+            </div>
+            <div class="mudr">
+                <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">6. 8. - 13. 8. 2021</h2>
+                <p><strong>Zastupuje MUDr. Eva Jašová</strong></p>
+                <p>(Gahurova 77, tel. 577220435)</p>
+            </div>
         </div>
-        <div class="mudr">
-            <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">6. 8. - 13. 8. 2021</h2>
-            <p><strong>Zastupuje MUDr. Eva Jašová</strong></p>
-            <p>(Gahurova 77, tel. 577220435)</p>
+        <div class="dovolena-text">
+            <p>Obě zastupující lékařky budou k dispozici pro akutne němocné děti. Veškerou preventivní (očkování) a administrativní činnost (potvrzení na tábory a brigády, výpisy z dokumentace,...) si zajistěte včas u nás!</p>
+            <p>Zastupující lékař není povinen a ani oprávněn toto dělat.</p>
         </div>
-    </div>
-    <div class="dovolena-text">
-        <p>Obě zastupující lékařky budou k dispozici pro akutne němocné děti. Veškerou preventivní (očkování) a administrativní činnost (potvrzení na tábory a brigády, výpisy z dokumentace,...) si zajistěte včas u nás!</p>
-        <p>Zastupující lékař není povinen a ani oprávněn toto dělat.</p>
-    </div>
--->
+    -->
 
     <?php
     while ($uzivatel = $zobrazit->fetch_assoc()) {
         $publikovat = $uzivatel['zobrazit'];
     }
 
-    if ($publikovat == 'ano') {
+    if ($publikovat === 'ano') {
         if (!empty($aktualita)) {
-            //echo '<div class="row">';
+            echo '<div class="row">';
             echo '<div class="home-aktualita col-md-12">';
             echo '<div class="home-aktualita-in" style="padding-left: 0; padding-right: 0">';
 
@@ -76,6 +87,7 @@
                 // Perex
                 if (isset($value['perex']) && !empty($value['perex'])) {
                     echo '<div class="aktualita-perex">' . $value['perex'] . '</div>';
+                    echo '<div class="aktualita-perex-line"></div>';
                 }
                 // Obsah
                 if (isset($value['obsah']) && !empty($value['obsah'])) {
@@ -87,14 +99,10 @@
             }
             echo '</div>';
             echo '</div>';
-            //echo '</div>';
         } else {
             echo '';
         }
-
     }
-
-
     ?>
 
     <div class="persons row">
@@ -117,7 +125,6 @@
     </div>
 
     <div class="home-introduction row">
-
         <div class="introduction-list col-sm-6 col-md-6">
             <div class="item-text">
                 <div class="number">1.</div>
@@ -155,7 +162,5 @@
               <li><a href="nadstandardni-sluzby">Nadstandardní služby</a></li>
             </ul>-->
         </div>
-
     </div>
-
 </div>
