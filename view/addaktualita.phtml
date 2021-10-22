@@ -10,10 +10,16 @@
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
 </script>
+<style>
+    .btn-save {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+</style>
 <div class="row">
     <!--    <div class="add-form col-md-8 center-block">-->
     <div>
-        <h1><?php echo $pokus; ?>Vlozit aktualitu</h1>
+        <h1>Vlozit aktualitu</h1>
         <form action="" method="post">
             <?php
             foreach ($aktualita as $value) {
@@ -33,7 +39,7 @@
                 echo ' /><br /><br />';
             }
             ?>
-            <input class="btn btn-default" type="submit" name="ok" value="Uložit"/>
+            <input class="btn btn-default btn-save" type="submit" name="ok" value="Uložit" style="float: right" />
         </form>
     </div>
 </div>
