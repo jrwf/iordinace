@@ -10,7 +10,7 @@ if ($_POST) {
         $hlavicka = 'From:' . $_POST['email'];
         $hlavicka .= "\nMIME-Version: 1.0\n";
         $hlavicka .= "Content-Type: text/html; charset=\"utf-8\"\n";
-        $adresa = 'jiri.wolf@jw.cz';
+        $adresa = 'jiri.wolf@gmail.com';
 //        $adresa = 'mprecechtelova@seznam.cz';
         $predmet = 'Nová zpráva z webu - test';
         $uspech = mb_send_mail($adresa, $predmet, $_POST['zprava'], $hlavicka);
