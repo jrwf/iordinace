@@ -19,6 +19,7 @@ class AddaktualitaKontroler extends Kontroler
       }
 
       $this->data['aktualita'] = $addaktualita->vypsatAktualitu();
+      $this->data['pokus'] = 'nejaky text';
 
       $this->pohled = 'addaktualita';
    }

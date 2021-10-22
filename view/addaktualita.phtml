@@ -13,12 +13,14 @@
 <div class="row">
     <!--    <div class="add-form col-md-8 center-block">-->
     <div>
-        <h1>Vlozit aktualitu</h1>
+        <h1><?php echo $pokus; ?>Vlozit aktualitu</h1>
         <form action="" method="post">
             <?php
             foreach ($aktualita as $value) {
                 echo '<label for="">Nadpis:</label><br />';
                 echo '<input class="form-control" type="text" name="nadpis" value="' . $value['nadpis'] . '" size="50" /><br /><br />';
+                echo '<label for="">Perex:</label><br />';
+                echo '<textarea class="form-control" name="perex" rows="10" cols="50">' . $value['perex'] . '</textarea><br /><br />';
                 echo '<label for="">Obsah:</label><br />';
                 echo '<textarea class="form-control" name="obsah" rows="40" cols="50">' . $value['obsah'] . '</textarea><br /><br />';
                 echo '<label for="">Zveřejnit: </label> ';
