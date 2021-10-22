@@ -1,34 +1,38 @@
 <div class="col-sm-6 col-md-6">
-  <img src="../images/lekarsky-dum.jpg" alt="" class="img-responsive lekarsky-dum" />
+    <img src="../images/lekarsky-dum.jpg" alt="" class="img-responsive lekarsky-dum"/>
 </div>
 <div class="col-sm-6 col-md-6">
-  <?php //echo '<p class="hlaska">' . $hlaska . '</p>'; ?>
-  <?php
-
-if(isset($hlaska) && !empty($hlaska)) {
-  echo '<p class="hlaska">' . $hlaska . '</p>';
-}
-
-?>
-  <form action="" method="post">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Váš e-mail:</label>
-      <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="<?php if (isset($_POST['email'])) echo(htmlspecialchars($_POST['email'])); ?>">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Vaše zpráva:</label>
-      <textarea class="form-control" name="zprava" rows="12"><?php if (isset($_POST['zprava'])) echo(htmlspecialchars($_POST['zprava'])); ?></textarea>
-    </div>
-    <div class="form-group" class="col-md-6">
-      <label for="exampleInputEmail1">Aktuální rok:</label>
-      <input type="text" name="rok" class="form-control" id="exampleInputEmail1" placeholder="" size="22">
-    </div>
-    <div class="form-group">
-      <input type="submit" name="odeslat" id="" value="Odeslat" />
-    </div>
-  </form>
+    <?php
+        if (isset($hlaska) && !empty($hlaska)) {
+            echo '<p class="hlaska">' . $hlaska . '</p>';
+        }
+    ?>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Váš e-mail:</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="<?php if (isset($_POST['email'])) {
+                echo(htmlspecialchars($_POST['email']));
+            } ?>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Vaše zpráva:</label>
+            <textarea class="form-control" name="zprava" rows="12">
+                <?php if (isset($_POST['zprava'])) {
+                    echo(htmlspecialchars($_POST['zprava']));
+                } ?>
+            </textarea>
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="exampleInputEmail1">Aktuální rok:</label>
+            <input type="text" name="rok" class="form-control" id="exampleInputEmail1" placeholder="" size="22">
+        </div>
+        <div class="form-group">
+            <input type="submit" name="odeslat" id="" value="Odeslat"/>
+        </div>
+    </form>
 </div>
 
 <div class="google-maps col-md-12">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2178.4326487972403!2d17.652234450885736!3d49.21999017922306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713734cbb9a7223%3A0x85ba6048b1e54614!2zS290xJtyb3ZhIDU1MjksIDc2MCAwMSBabMOtbiwgxIxlc2vDoSByZXB1Ymxpa2E!5e1!3m2!1scs!2sus!4v1450095058949" width="1000" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2178.4326487972403!2d17.652234450885736!3d49.21999017922306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713734cbb9a7223%3A0x85ba6048b1e54614!2zS290xJtyb3ZhIDU1MjksIDc2MCAwMSBabMOtbiwgxIxlc2vDoSByZXB1Ymxpa2E!5e1!3m2!1scs!2sus!4v1450095058949"
+            width="1000" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
