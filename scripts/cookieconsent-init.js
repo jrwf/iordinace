@@ -79,7 +79,7 @@ cc.run({
                     {
                         title: 'Používání souborů cookie',
                         // TODO - doplnit odkaz na Zásady ochrany osobních údajů.
-                        description: 'Soubory cookie používáme k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="#" class="cc-link">Zásady ochrany osobních údajů</a>.'
+                        description: 'Soubory cookie používáme k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="gdpr" class="cc-link">Zásady ochrany osobních údajů</a>.'
                     }, {
                         title: 'Nezbytně nutné soubory cookie',
                         description: 'Tyto soubory cookie jsou nezbytné pro správné fungování  webových stránek. Bez těchto souborů cookie by webové stránky nefungovaly správně.',
@@ -98,30 +98,36 @@ cc.run({
                         },
                         cookie_table: [             // list of all expected cookies
                             {
-                                col1: '^_ga',       // match all cookies starting with "_ga"
-                                col2: 'google.com',
+                                col1: '_ga',       // match all cookies starting with "_ga"
+                                col2: '.iordinace.cz',
                                 col3: '2 years',
-                                col4: 'description ...',
+                                col4: 'Soubor cookie _ga, instalovaný službou Google Analytics, vypočítává údaje o návštěvnících, relacích a kampaních a také sleduje používání webu pro analytickou zprávu webu. Soubor cookie ukládá informace anonymně a k rozpoznání jedinečných návštěvníků přiřazuje náhodně vygenerované číslo.',
                                 is_regex: true
                             },
                             {
                                 col1: '_gid',
-                                col2: 'google.com',
+                                col2: '.iordinace.cz',
                                 col3: '1 day',
-                                col4: 'description ...',
+                                col4: 'Soubor cookie _gid, instalovaný službou Google Analytics, ukládá informace o tom, jak návštěvníci používají webové stránky, a zároveň vytváří analytickou zprávu o výkonu webových stránek. Mezi shromažďované údaje patří počet návštěvníků, jejich zdroj a anonymně navštívené stránky.',
+                            },
+                            {
+                                col1: '_git',
+                                col2: '.iordinace.cz',
+                                col3: '1 minuta',
+                                col4: 'Tento soubor cookie instaluje služba Google Universal Analytics, aby omezila počet požadavků a omezila tak shromažďování údajů na stránkách s vysokou návštěvností.',
                             }
                         ]
                     }, {
-                        title: 'Soubory cookie pro reklamu a cílení.',
-                        description: 'Tyto soubory cookie shromažďují informace o tom, jak webové stránky používáte, které stránky jste navštívili a na které odkazy jste klikli. Všechny údaje jsou anonymizované a nelze je použít k vaší identifikaci.',
-                        toggle: {
-                            value: 'targeting',
-                            enabled: false,
-                            readonly: false
-                        }
+                        // title: 'Soubory cookie pro reklamu a cílení.',
+                        // description: 'Tyto soubory cookie shromažďují informace o tom, jak webové stránky používáte, které stránky jste navštívili a na které odkazy jste klikli. Všechny údaje jsou anonymizované a nelze je použít k vaší identifikaci.',
+                        // toggle: {
+                        //     value: 'targeting',
+                        //     enabled: false,
+                        //     readonly: false
+                        // }
                     }, {
-                        title: 'Více informací',
-                        description: 'V případě jakýchkoli dotazů týkajících se našich zásad ohledně souborů cookie a vašich voleb nás prosím <a class="cc-link" href="#yourcontactpage">kontaktujte</a>.',
+                        // title: 'Více informací',
+                        // description: 'V případě jakýchkoli dotazů týkajících se našich zásad ohledně souborů cookie a vašich voleb nás prosím <a class="cc-link" href="#yourcontactpage">kontaktujte</a>.',
                     }
                 ]
             }
