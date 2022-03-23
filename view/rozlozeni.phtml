@@ -62,11 +62,15 @@ if($_POST) {
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700italic,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,700italic' rel='stylesheet' type='text/css'>
-
     <!-- test -->
+    <!-- Cookie lišta-->
+    <link rel="stylesheet" href="/styles/cookieconsent.css" type="text/css">
   </head>
 
   <body class="<?php echo $main->bodyClass(); ?>">
+  <script src="/scripts/cookieconsent.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="/scripts/cookieconsent-init.js" type="text/javascript" charset="UTF-8"></script>
+
   <!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -74,7 +78,7 @@ if($_POST) {
   <header>
     <div class="container header-top">
       <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-3 pull-left"><div class="logo"><a href="/">iOrdinace.cz</a></div></div>  
+        <div class="col-xs-12 col-sm-3 col-md-3 pull-left"><div class="logo"><a href="/">iOrdinace.cz</a></div></div>
         <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="quick-contact">
             <p><strong>Do ordinace: </strong>+420 732 941 611<br /><strong>MUDr. Přecechtělová</strong> +420 604 286 854</p>
@@ -127,15 +131,15 @@ if($_POST) {
       </div><!-- /.container-fluid -->
     </nav>
 
-    <?php 
+    <?php
       if($_SERVER['REQUEST_URI'] === '/home') {
-        include './include/slideshow.php'; 
+        include './include/slideshow.php';
       }
       else if ($_SERVER['REQUEST_URI'] == '/gallery') {
         echo '';
       }
       else {
-        include './include/foto.php';  
+        include './include/foto.php';
       }
     ?>
 
@@ -143,15 +147,15 @@ if($_POST) {
 
   <div class="content container">
 
-  <?php 
+  <?php
     if($_SERVER['REQUEST_URI'] == '/kontakt') {
-      include_once('./include/contact.php');  
+      include_once('./include/contact.php');
     }
   ?>
 
     <main class="row">
         <article>
-          <?php 
+          <?php
 
             $logged_user = (isset($_SESSION['logged_user'])) ? $_SESSION['logged_user'] : '';
 
@@ -165,9 +169,9 @@ if($_POST) {
         </article>
     </main>
 
-  <?php 
+  <?php
     if($_SERVER['REQUEST_URI'] != '/kontakt') {
-      include_once('./include/contact.php');  
+      include_once('./include/contact.php');
     }
   ?>
 
