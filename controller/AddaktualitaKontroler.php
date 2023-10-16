@@ -2,25 +2,26 @@
 
 class AddaktualitaKontroler extends Kontroler
 {
-   public function zpracuj($parametry)
-   {
-      $this->hlavicka = array(
-         'titulek' => '',
-         'klicova_slova' => '',
-         'popis' => ''
-      );
+    public function zpracuj($parametry)
+    {
+        $addaktualita = new \Addaktualita();
 
-      $addaktualita = new Addaktualita();
-      $addaktualita->vlozitAktualitu();
+        $this->hlavicka = array(
+            'titulek' => '',
+            'klicova_slova' => '',
+            'popis' => ''
+        );
 
-      if($_SESSION['logged_user'] != 'yes') {
-        header('Location: login');
-        exit;
-      }
+        $addaktualita->vlozitAktualitu();
 
-      $this->data['aktualita'] = $addaktualita->vypsatAktualitu();
-      $this->data['pokus'] = 'nejaky text';
+        if ($_SESSION['logged_user'] != 'yes') {
+            header('Location: login');
+            exit;
+        }
 
-      $this->pohled = 'addaktualita';
-   }
+        $this->data['aktualita'] = $addaktualita->vypsatAktualitu();
+        $this->data['pokus'] = 'nejaky text';
+
+        $this->pohled = 'addaktualita';
+    }
 }

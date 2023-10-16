@@ -5,43 +5,43 @@
 
 class SmerovacKontroler extends Kontroler
 {
-  // Instance controlleru
-  protected $kontroler;
+    // Instance controlleru
+    protected $kontroler;
 
-  // Metoda převede pomlčkovou variantu controlleru na název třídy
-  private function pomlckyDoVelbloudiNotace($text) 
-  {
-    $veta = str_replace('-', ' ', $text);
-    $veta = ucwords($veta);
-    $veta = str_replace(' ', '', $veta);
-    return $veta;
-  }
+    // Metoda převede pomlčkovou variantu controlleru na název třídy
+    private function pomlckyDoVelbloudiNotace($text)
+    {
+        $veta = str_replace('-', ' ', $text);
+        $veta = ucwords($veta);
+        $veta = str_replace(' ', '', $veta);
+        return $veta;
+    }
 
-  // Naparsuje URL adresu podle lomítek a vrátí pole parametrů
-  private function parsujURL($url)
-  {
-    // Naparsuje jednotlivé části URL adresy do asociativního pole
-    $naparsovanaURL = parse_url($url);
-    // Odstranění počátečního lomítka
-    $naparsovanaURL["path"] = ltrim($naparsovanaURL["path"], "/");
-    // Odstranění bílých znaků kolem adresy
-    $naparsovanaURL["path"] = trim($naparsovanaURL["path"]);
-    // Rozbití řetězce podle lomítek
-    $rozdelenaCesta = explode("/", $naparsovanaURL["path"]);
-    return $rozdelenaCesta;
-  }
+    // Naparsuje URL adresu podle lomítek a vrátí pole parametrů
+    private function parsujURL($url)
+    {
+        // Naparsuje jednotlivé části URL adresy do asociativního pole
+        $naparsovanaURL = parse_url($url);
+        // Odstranění počátečního lomítka
+        $naparsovanaURL["path"] = ltrim($naparsovanaURL["path"], "/");
+        // Odstranění bílých znaků kolem adresy
+        $naparsovanaURL["path"] = trim($naparsovanaURL["path"]);
+        // Rozbití řetězce podle lomítek
+        $rozdelenaCesta = explode("/", $naparsovanaURL["path"]);
+        return $rozdelenaCesta;
+    }
 
-  // Naparsování URL adresy a vytvoření příslušného controlleru
-  public function zpracuj($parametry)
-  {
-    $naparsovanaURL = $this->parsujURL($parametry[0]);
+    // Naparsování URL adresy a vytvoření příslušného controlleru
+    public function zpracuj($parametry)
+    {
+        $naparsovanaURL = $this->parsujURL($parametry[0]);
 
-    if (empty($naparsovanaURL[0]))		
-      $this->presmeruj('home');		
-    elseif ($naparsovanaURL[0] == 'dist')
-      $this->presmeruj('home');
-    // controller je 1. parametr URL
-    $tridaKontroleru = $this->pomlckyDoVelbloudiNotace(array_shift($naparsovanaURL)) . 'Kontroler';
+        if (empty($naparsovanaURL[0]))
+            $this->presmeruj('home');
+        elseif ($naparsovanaURL[0] == 'dist')
+            $this->presmeruj('home');
+        // controller je 1. parametr URL
+        $tridaKontroleru = $this->pomlckyDoVelbloudiNotace(array_shift($naparsovanaURL)) . 'Kontroler';
 
     if (file_exists('controller/' . $tridaKontroleru . '.php'))
       $this->kontroler = new $tridaKontroleru;
