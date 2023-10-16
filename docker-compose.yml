@@ -1,0 +1,47 @@
+version: '3.6'
+services:
+  app:
+    #    build: .
+#    build:
+#      dockerfile: ./Dockerfile
+    image: jrwf/php-7-4-apache:0.0.1
+    container_name: iordinace-app
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./.docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+    working_dir: /var/www/html
+    environment:
+      XDEBUG_MODE: debug
+      #      PHP_MEMORY_LIMIT: 1G
+      #      PHP_MEMORY_LIMIT: 512M
+#      PHP_UPLOAD_MAX_FILESIZE: 1G
+#      PHP_POST_MAX_SIZE: 1G
+      # Vpřípadě že použiju samostatný soubor
+    #      PHP_INI_SCAN_DIR: /usr/local/etc/php/conf.d
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - database
+
+  database:
+    container_name: iordinace-mysql
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iordinace-mysql
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./.docker/mysql:/var/lib/mysql
+
+  adminer:
+    container_name: iordinace-adminer
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+
