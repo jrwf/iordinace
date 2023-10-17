@@ -1,10 +1,10 @@
 <?php
 
-class AddaktualitaKontroler extends Kontroler
+class AktualitaKontroler extends Kontroler
 {
     public function zpracuj($parametry)
     {
-        $addaktualita = new \Addaktualita();
+        $aktualita = new \Addaktualita();
 
         $this->hlavicka = array(
             'titulek' => '',
@@ -12,16 +12,16 @@ class AddaktualitaKontroler extends Kontroler
             'popis' => ''
         );
 
-        $addaktualita->vlozitAktualitu();
+        $aktualita->vlozitAktualitu();
 
         if ($_SESSION['logged_user'] != 'yes') {
             header('Location: login');
             exit;
         }
 
-        $this->data['aktualita'] = $addaktualita->vypsatAktualitu();
+        $this->data['aktualita'] = $aktualita->vypsatAktualitu();
         $this->data['pokus'] = 'nejaky text';
 
-        $this->pohled = 'addaktualita';
+        $this->pohled = 'aktualita';
     }
 }

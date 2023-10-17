@@ -1,4 +1,42 @@
-test
-kkkkkkk
+<style>
+    table, th, td {
+        width: 100%;
+        border: 1px solid silver;
+        border-collapse: collapse;
+    }
+    th, td{
+        padding: 10px 10px;
+    }
+    th{
+        text-align: left;
+    }
+    table tr:nth-child(even) {
+        background-color: #eee;
+    }
+    table tr:nth-child(odd) {
+        background-color: #fff;
+    }
+    table th {
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<table>
+<tr>
+    <th>Nadpis</th>
+    <th>Upravit</th>
+    <th>Smazat</th>
+</tr>
+    <a href="/aktualita">Nová zpráva</a>
 <?php
-echo $administrace;
+$seznamAktualit = $this->data['seznamAktualit'];
+foreach ($seznamAktualit as $key => $value) {
+    echo '<tr>';
+    echo '<td>' . $value['nadpis'] . '</td>';
+    echo '<td><a href="/aktualita-edit?idaktualita=' . $value['idaktualita'] . '">upravit</a></td>';
+    echo '<td><a href="/aktualita-delete?idaktualita=' . $value['idaktualita'] . '">smazat</a></td>';
+    echo '</tr>';
+}
+?>
+</table>

@@ -35,6 +35,34 @@ class Addaktualita
     }
 
     /**
+     * Vrací seznam aktualit.
+     *
+     * @return array|false|null
+     * @throws Exception
+     */
+    public function seznamAktualit()
+    {
+        $mysql = $this->getSpojeni();
+        try {
+            return $mysql->query("select idaktualita, nadpis, perex, obsah from aktualita")->fetch_all(MYSQLI_ASSOC);
+        } catch (Exception $e) {
+            throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
+        }
+    }
+
+    public function detailAktuality(int $id)
+    {
+        $mysql = $this->getSpojeni();
+        return $mysql->query("select * from aktualita where idaktualita = $id")->fetch_assoc();
+    }
+
+    public function smazatAktualitu(int $id)
+    {
+        $mysql = $this->getSpojeni();
+        $mysql->query("delete from aktualita where idaktualita = $id");
+    }
+
+    /**
      * @return mysqli|null
      */
     public function getSpojeni()

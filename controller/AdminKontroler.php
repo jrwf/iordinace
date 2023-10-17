@@ -2,6 +2,9 @@
 
 class AdminKontroler extends Kontroler
 {
+    /**
+     * @throws Exception
+     */
     public function zpracuj($parametry)
     {
         $this->hlavicka = array(
@@ -10,7 +13,10 @@ class AdminKontroler extends Kontroler
             'popis' => ''
         );
 
+        $addaktuality = new \Addaktualita();
+
         $this->data['administrace'] = 'administrace je tady';
+        $this->data['seznamAktualit'] = $addaktuality->seznamAktualit();
 
         $this->pohled = 'admin';
     }
