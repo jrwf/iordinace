@@ -17,7 +17,6 @@ class LoginKontroler extends Kontroler
     $hlaska = '';
 
     $logovani = new Login();
-    //$logovani->logovani();
     $logovani->presmerovani();
 
     $this->data['hlaska'] = $logovani->logovani();
