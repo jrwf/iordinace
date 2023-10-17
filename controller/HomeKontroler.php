@@ -2,7 +2,10 @@
 
 class HomeKontroler extends Kontroler
 {
-   public function zpracuj($parametry)
+    /**
+     * @throws Exception
+     */
+    public function zpracuj($parametry)
    {
       $this->hlavicka = array(
          'titulek' => 'ordinace dětské lékařky MUDr. Přecechtělové',
@@ -11,11 +14,11 @@ class HomeKontroler extends Kontroler
       );
 
       $addaktualita = new Addaktualita();
+      $zkracovac = HelperKontroler::zkratitText('Nějaký text', 10);
 
       $this->data['jmeno'] = 'Nejake jmeno';
       $this->data['admin'] = 'Administrator';
-      $this->data['aktualita'] = $addaktualita->vypsatAktualitu();
-      $this->data['zobrazit'] = $addaktualita->zobrazitAktualitu();
+      $this->data['aktuality'] = $addaktualita->seznamAktualit();
 
       $this->pohled = 'home';
    }

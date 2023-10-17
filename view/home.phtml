@@ -29,81 +29,46 @@
         width: 100%;
     }
 
+    .aktuality {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .aktualita {
+        flex: 1 1 20%;
+        margin: 25px;
+    }
+
     .aktualita-perex {
         margin-top: 20px;
         margin-bottom: 30px;
-        border-left: 25px solid #e872c0;
-        padding: 0 0 0 40px;
+        /*border-left: 25px solid #e872c0;*/
+        /*padding: 0 0 0 20px;*/
+        line-height: 150%;
+        font-size: 18px;
     }
 
-    .aktualita-perex-line {
-        border-bottom: 1px solid #48c1e0;
-        margin-bottom: 70px;
+    .aktualita-detail a {
+        text-align: left;
+        font-size: 18px;
+        text-decoration: underline;
     }
 </style>
 <div class="home-page">
 
-    <!--    <h2 style="text-align: center; margin-bottom: 30px">PLÁN DOVOLENÉ - LÉTO 2021</h2>
-        <div style="display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap">
-            <div class="mudr">
-                <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">14. 7. - 23. 7. 2021</h2>
-                <p><strong>Zastupuje MUDr. Monika Ilíková</strong></p>
-                <p>(Ordinaci má v patře nad námi, tel. 571110537)</p>
-            </div>
-            <div class="mudr">
-                <h2 style="font-size: 19px; font-weight: bold; color: #e872c0">6. 8. - 13. 8. 2021</h2>
-                <p><strong>Zastupuje MUDr. Eva Jašová</strong></p>
-                <p>(Gahurova 77, tel. 577220435)</p>
-            </div>
-        </div>
-        <div class="dovolena-text">
-            <p>Obě zastupující lékařky budou k dispozici pro akutne němocné děti. Veškerou preventivní (očkování) a administrativní činnost (potvrzení na tábory a brigády, výpisy z dokumentace,...) si zajistěte včas u nás!</p>
-            <p>Zastupující lékař není povinen a ani oprávněn toto dělat.</p>
-        </div>
-    -->
-
-    <?php
-    while ($uzivatel = $zobrazit->fetch_assoc()) {
-        $publikovat = $uzivatel['zobrazit'];
-    }
-
-    if ($publikovat === 'ano') {
-        if (!empty($aktualita)) {
-            echo '<div class="row">';
-            echo '<div class="home-aktualita col-md-12">';
-            echo '<div class="home-aktualita-in" style="padding-left: 0; padding-right: 0">';
-
-//            echo '<h2>Důležité informace související s GDPR:</h2>';
-//            echo '<ul>';
-//            echo '<li>Telefonické informace ohledně zdravotního stavu dítěte a výsledků vyšetření  jsou sdělovány pouze rodičům - zákonným zástupcům dítěte - po identifikaci heslem, které bude osobně sděleno v ordinaci.</li>';
-//            echo '<li>Zasílání lékařských zpráv nebo výsledků vyšetření  je možné jen zabezpečenou komunikací přes naše internetové stránky. Bližší informace podáme v ordinaci.</li>';
-//            echo '</ul>';
-
-            foreach ($aktualita as $value) {
-                // Nadpis
-                if (isset($value['nadpis']) && !empty($value['nadpis'])) {
-                    echo '<h2>' . $value['nadpis'] . '</h2>';
-                }
-                // Perex
-                if (isset($value['perex']) && !empty($value['perex'])) {
-                    echo '<div class="aktualita-perex">' . $value['perex'] . '</div>';
-                    echo '<div class="aktualita-perex-line"></div>';
-                }
-                // Obsah
-                if (isset($value['obsah']) && !empty($value['obsah'])) {
-                    echo '<div class="aktualita-content">' . $value['obsah'] . '</div>';
-                }
-            }
-            if (isset($_SESSION['logged_user'])) {
-                echo '<p><a href="addaktualita">Upravit</a>';
-            }
-            echo '</div>';
-            echo '</div>';
-        } else {
-            echo '';
-        }
-    }
-    ?>
+    <div class="aktuality">
+        <?php
+            $aktuality = $this->data['aktuality'];
+            foreach ($aktuality as $aktualita) {
+        ?>
+            <article class="aktualita">
+                <h2><a href="/aktualita?idaktualita=<?php echo $aktualita['idaktualita'] ?>"><?php echo $aktualita['nadpis'] ?></a></h2>
+                <div class="aktualita-perex"><?php echo HelperKontroler::zkratitText($aktualita['perex']); ?></div>
+                <p class="aktualita-detail"><a href="/aktualita?<?php echo $aktualita['idaktualita'] ?>">Detail</a></p>
+            </article>
+        <?php }; ?>
+    </div>
 
     <div class="persons row">
         <div class="osoba col-sm-4 col-md-4">
