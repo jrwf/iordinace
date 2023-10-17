@@ -29,9 +29,7 @@ class DatabaseConnection
             if ($db->error) {
                 throw new Exception('Chyba při nastavování kódování - ' . $db->error);
             }
-
-            echo 'Připojení proběhlo úspěšně ' . $db->host_info . "\n";
-
+//            echo 'Připojení proběhlo úspěšně ' . $db->host_info . "\n";
             return $db;
         } catch (Exception $e) {
             die($e->getMessage());
