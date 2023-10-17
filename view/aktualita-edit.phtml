@@ -1,8 +1,51 @@
-cosi auto
-<?php
-$aktualita = $this->data['aktualita'];
-?>
-<h1>Upravit aktualitu</h1>
-<h2><?php echo $aktualita['nadpis'] ?></h2>
-<div><?php echo $aktualita['perex'] ?></div>
-<div><?php echo $aktualita['obsah'] ?></div>
+<script src="https://cdn.tiny.cloud/1/g3jzocc6gvssfs8oyjmnsprmf5y1hlnhkv3absc3c7aemtoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        // selector: "textarea[name=obsah]",
+        menubar: false,
+        plugins: 'lists, code',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | code | removeformat',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    });
+</script>
+<style>
+    .btn-save {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+
+    .form-check-label {
+        font-size: 15px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+</style>
+<div class="row">
+    <div class="add-form col-md-8 center-block">
+        <h1>Úprava aktuality</h1>
+        <?php $aktualita = $this->data['aktualita']; ?>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="">Nadpis:</label><br/>
+                <input class="form-control" type="text" name="nadpis" value="<?php echo $aktualita['nadpis'] ?>" size="50"/><br/>
+            </div>
+            <div class="form-group">
+                <label for="">Perex:</label><br/>
+                <textarea class="form-control" name="perex" rows="10" cols="50"><?php echo $aktualita['perex'] ?></textarea><br/>
+            </div>
+            <div class="form-group">
+                <label for="">Obsah:</label><br/>
+                <textarea class="form-control" name="obsah" rows="20" cols="50"><?php echo $aktualita['obsah'] ?></textarea><br/>
+            </div>
+            <div class="form-group form-check">
+                <label for="" class="form-check-label">Zveřejnit: </label>
+                <input type="checkbox" name="zobrazit" class="form-check-input" value="ano" />
+            </div>
+            <div class="form-group">
+                <input class="btn btn-default btn-save" type="submit" name="ok" value="Uložit" style="float: right"/>
+            </div>
+        </form>
+    </div>
+</div>
+
