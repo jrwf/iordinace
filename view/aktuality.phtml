@@ -1,0 +1,16 @@
+<div class="add-form col-md-11 center-block aktualita-detail">
+    <div class="aktuality">
+        <?php
+        $aktuality = $this->data['aktuality'];
+        foreach ($aktuality as $aktualita) {
+        ?>
+        <article class="aktualita">
+            <h2><a href="/aktualita?idaktualita=<?php echo $aktualita['idaktualita'] ?>"><?php echo $aktualita['nadpis'] ?></a></h2>
+            <strong class="perex"><?php echo $aktualita['datum']; ?></strong>
+            <div class="aktualita-perex"><?php echo HelperKontroler::zkratitText($aktualita['perex']); ?></div>
+            <?php if (strlen($aktualita['perex']) >= 350) { ?>
+                <p class="aktualita-detail"><a href="/aktualita?<?php echo $aktualita['idaktualita'] ?>">Více</a></p>
+            <?php }; ?>
+            <?php }; ?>
+    </div>
+</div>
