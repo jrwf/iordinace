@@ -83,7 +83,11 @@ $main = new Main();
 <!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-
+<style>
+    .content {
+        padding-top: 50px;
+    }
+</style>
 <header>
     <div class="container header-top">
         <div class="row">
@@ -153,8 +157,8 @@ $main = new Main();
     ?>
 
 </header>
-
-<div class="content container-fluid">
+<?php $container = $this->data['container']; ?>
+<div class="content <?php echo $container; ?>">
 
     <?php
     if ($_SERVER['REQUEST_URI'] == '/kontakt') {
@@ -163,16 +167,14 @@ $main = new Main();
     ?>
 
     <main class="row">
-        <div>
-            <?php
-            $logged_user = (isset($_SESSION['logged_user'])) ? $_SESSION['logged_user'] : '';
-            if ($logged_user === 'yes') {
-                //echo 'Jste prihlasen';
-            }
-            // vložení aktuálního pohledu do šablony
-            $this->kontroler->vypisPohled();
-            ?>
-        </div>
+        <?php
+        $logged_user = (isset($_SESSION['logged_user'])) ? $_SESSION['logged_user'] : '';
+        if ($logged_user === 'yes') {
+            //echo 'Jste prihlasen';
+        }
+        // vložení aktuálního pohledu do šablony
+        $this->kontroler->vypisPohled();
+        ?>
     </main>
 
     <?php

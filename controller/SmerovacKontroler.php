@@ -43,28 +43,28 @@ class SmerovacKontroler extends Kontroler
         // controller je 1. parametr URL
         $tridaKontroleru = $this->pomlckyDoVelbloudiNotace(array_shift($naparsovanaURL)) . 'Kontroler';
 
-    if (file_exists('controller/' . $tridaKontroleru . '.php'))
-      $this->kontroler = new $tridaKontroleru;
-    else
-      $this->presmeruj('chyba');
+        if (file_exists('controller/' . $tridaKontroleru . '.php'))
+            $this->kontroler = new $tridaKontroleru;
+        else
+            $this->presmeruj('chyba');
 
-    // Volání controlleru
-    $this->kontroler->zpracuj($naparsovanaURL);
+        // Volání controlleru
+        $this->kontroler->zpracuj($naparsovanaURL);
 
-    // Nastavení proměnných pro šablonu
-    $this->data['titulek'] = $this->kontroler->hlavicka['titulek'];
-    $this->data['popis'] = $this->kontroler->hlavicka['popis'];
-    $this->data['klicova_slova'] = $this->kontroler->hlavicka['klicova_slova'];
-    $this->data['zpravy'] = $this->vratZpravy();
+        // Nastavení proměnných pro šablonu
+        $this->data['titulek'] = $this->kontroler->hlavicka['titulek'];
+        $this->data['popis'] = $this->kontroler->hlavicka['popis'];
+        $this->data['klicova_slova'] = $this->kontroler->hlavicka['klicova_slova'];
+        $this->data['zpravy'] = $this->vratZpravy();
 
-    // Nastavení hlavní šablony
-    /*if ($_SERVER['REQUEST_URI'] == '/home') {
-      $this->pohled = 'rozlozeniindex';
+        // Nastavení hlavní šablony
+        if ($_SERVER['REQUEST_URI'] == '/home') {
+            $this->data['container'] = 'container-fluid';
+        } else {
+            $this->data['container'] = 'container';
+        }
+
+        $this->pohled = 'rozlozeni';
     }
-    else {
-      $this->pohled = 'rozlozeni';
-    }*/
-    $this->pohled = 'rozlozeni';
-  }
 
 }

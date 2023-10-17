@@ -1,10 +1,31 @@
-<div class="row">
-    <div class="add-form col-md-11 center-block">
-        <a href="/home">Zpět</a>
-        <?php $aktualita = $this->data['aktualita']; ?>
-        <h1><?php echo $aktualita['nadpis']; ?></h1>
-        <div class="perex"><?php echo $aktualita['perex']; ?></div>
-        <div class="perex"><?php echo $aktualita['perex']; ?></div>
-        <div class="obsah"><?php echo $aktualita['obsah']; ?></div>
-    </div>
+<style>
+    .back {
+        display: block;
+        margin-bottom: 30px;
+        font-size: 17px;
+    }
+
+    .datum {
+        font-size: 17px;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .aktualita-detail p {
+        font-size: 17px;
+        line-height: 160%;
+    }
+
+    .aktualita-detail .perex {
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+</style>
+<div class="add-form col-md-11 center-block aktualita-detail">
+    <a href="/home" class="back">Zpět</a>
+    <?php $aktualita = $this->data['aktualita']; ?>
+    <h1><?php echo $aktualita['nadpis']; ?></h1>
+    <strong class="datum"><?php echo $aktualita['datum']; ?></strong>
+    <p class="perex"><?php echo $aktualita['perex']; ?></p>
+    <div class="obsah"><?php echo $aktualita['obsah']; ?></div>
 </div>

@@ -2,7 +2,7 @@
 
 class HelperKontroler
 {
-    public static function zkratitText(string $retezec, int $maxDelka = 250): string
+    public static function zkratitText(string $retezec, int $maxDelka = 350): string
     {
         if (strlen($retezec) > $maxDelka) {
             $zkraceno = substr($retezec, 0, $maxDelka);
