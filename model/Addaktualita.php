@@ -70,14 +70,16 @@ class Addaktualita
     /**
      * Vrací seznam aktualit.
      *
+     * @param int|null $limit
      * @return array
      * @throws Exception
      */
-    public function seznamAktualit(): array
+    public function seznamAktualit(?int $limit = null): array
     {
         $mysql = $this->getSpojeni();
         try {
-            return $mysql->query("select idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum from aktualita order by idaktualita desc")->fetch_all(MYSQLI_ASSOC);
+            $limitClause = $limit !== null ? "LIMIT $limit" : '';
+            return $mysql->query("SELECT idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum FROM aktualita ORDER BY idaktualita DESC $limitClause")->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
             throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
         }

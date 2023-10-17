@@ -16,10 +16,10 @@ class AktualitaKontroler extends Kontroler
 
         $aktualita->vlozitAktualitu();
 
-        if ($_SESSION['logged_user'] != 'yes') {
+/*        if ($_SESSION['logged_user'] != 'yes') {
             header('Location: login');
             exit;
-        }
+        }*/
 
         $this->data['aktualita'] = $aktualita->vypsatAktualitu($idaktualita);
 

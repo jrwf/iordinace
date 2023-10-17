@@ -31,13 +31,20 @@
 
     .aktuality {
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-start;
         flex-wrap: wrap;
+        margin-bottom: 100px;
     }
 
     .aktualita {
-        flex: 1 1 20%;
-        margin: 25px;
+        flex: 0 1 calc(100% / 4);
+        padding: 0 20px 40px 20px;
+        margin: 0;
+    }
+
+    .aktualita h2 {
+        margin-top: 0;
+        line-height: 140%;
     }
 
     .aktualita-perex {
@@ -46,7 +53,7 @@
         /*border-left: 25px solid #e872c0;*/
         /*padding: 0 0 0 20px;*/
         line-height: 150%;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .aktualita-detail a {
@@ -54,18 +61,58 @@
         font-size: 18px;
         text-decoration: underline;
     }
+
+    @media screen and (max-width: 1200px) {
+        .aktuality {
+            justify-content: space-between;
+        }
+
+        .aktualita {
+            flex: 0 1 calc(100% / 3);
+            padding: 0 20px 40px 20px;
+        }
+
+        .aktualita h2 {
+            font-size: 20px;
+        }
+
+        .aktualita .datum {
+            font-size: 16px;
+        }
+
+        .aktualita .perex {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width: 850px) {
+        .aktualita {
+            flex: 0 1 calc(100% / 2);
+            padding: 0 20px 40px 20px;
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        .aktualita {
+            flex: 0 1 calc(100%);
+            padding: 0 20px 20px 20px;
+        }
+    }
 </style>
 <div class="home-page">
 
     <div class="aktuality">
         <?php
-            $aktuality = $this->data['aktuality'];
-            foreach ($aktuality as $aktualita) {
-        ?>
+        $aktuality = $this->data['aktuality'];
+        foreach ($aktuality as $aktualita) {
+            ?>
             <article class="aktualita">
                 <h2><a href="/aktualita?idaktualita=<?php echo $aktualita['idaktualita'] ?>"><?php echo $aktualita['nadpis'] ?></a></h2>
+                <strong class="perex"><?php echo $aktualita['datum']; ?></strong>
                 <div class="aktualita-perex"><?php echo HelperKontroler::zkratitText($aktualita['perex']); ?></div>
-                <p class="aktualita-detail"><a href="/aktualita?<?php echo $aktualita['idaktualita'] ?>">Detail</a></p>
+                <?php if (strlen($aktualita['perex']) >= 350) { ?>
+                    <p class="aktualita-detail"><a href="/aktualita?<?php echo $aktualita['idaktualita'] ?>">Více</a></p>
+                <?php }; ?>
             </article>
         <?php }; ?>
     </div>
