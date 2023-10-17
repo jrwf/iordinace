@@ -4,6 +4,8 @@ class AktualitaKontroler extends Kontroler
 {
     public function zpracuj($parametry)
     {
+        $idaktualita = (int)$_GET['idaktualita'];
+
         $aktualita = new \Addaktualita();
 
         $this->hlavicka = array(
@@ -19,8 +21,7 @@ class AktualitaKontroler extends Kontroler
             exit;
         }
 
-        $this->data['aktualita'] = $aktualita->vypsatAktualitu();
-        $this->data['pokus'] = 'nejaky text';
+        $this->data['aktualita'] = $aktualita->vypsatAktualitu($idaktualita);
 
         $this->pohled = 'aktualita';
     }

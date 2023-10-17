@@ -48,21 +48,32 @@ class Addaktualita
         return $data;
     }
 
-    public function vypsatAktualitu()
+    /**
+     * @param int $idaktualita
+     * @return array|false|null
+     */
+    public function vypsatAktualitu(int $idaktualita)
     {
         $mysql = $this->getSpojeni();
         $mysql->set_charset('utf8');
-        $data = $mysql->query("select * from aktualita where idaktualita = 1");
+        $data = $mysql->query("select 
+                                        idaktualita,
+                                        DATE_FORMAT(ts, '%d. %m. %Y') as datum, 
+                                        nadpis, 
+                                        perex, 
+                                        obsah 
+                                        from aktualita 
+                                        where idaktualita = $idaktualita")->fetch_assoc();
         return $data;
     }
 
     /**
      * Vrací seznam aktualit.
      *
-     * @return array|false|null
+     * @return array
      * @throws Exception
      */
-    public function seznamAktualit()
+    public function seznamAktualit(): array
     {
         $mysql = $this->getSpojeni();
         try {

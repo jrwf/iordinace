@@ -4,45 +4,54 @@ mb_internal_encoding("UTF-8");
 
 $zprava = '';
 
-if($_POST) {
-  if( isset($_POST['email']) && $_POST['email'] && isset($_POST['zprava']) && $_POST['zprava'] && isset($_POST['rok']) && $_POST['rok'] == date('Y') ) {
+if ($_POST) {
+    if (isset($_POST['email']) && $_POST['email'] && isset($_POST['zprava']) && $_POST['zprava'] && isset($_POST['rok']) && $_POST['rok'] == date('Y')) {
 
-      $hlavicka = 'From:' . $_POST['email'];
-      $hlavicka .= "\nMIME-Version: 1.0\n";
-      $hlavicka .= "Content-Type: text/html; charset=\"utf-8\"\n";
-      $adresa = 'mprecechtelova@seznam.cz';
-      $predmet = 'Nová zpráva z webu';
-      $uspech = mb_send_mail($adresa, $predmet, $_POST['zprava'], $hlavicka);
+        $hlavicka = 'From:' . $_POST['email'];
+        $hlavicka .= "\nMIME-Version: 1.0\n";
+        $hlavicka .= "Content-Type: text/html; charset=\"utf-8\"\n";
+        $adresa = 'mprecechtelova@seznam.cz';
+        $predmet = 'Nová zpráva z webu';
+        $uspech = mb_send_mail($adresa, $predmet, $_POST['zprava'], $hlavicka);
 
-      if ($uspech) {
-        //$zprava = 'Email byl úspěšně odeslán, brzy vám odpovíme.';
-        header('Location: https://iordinace.cz/kontakt?uspech=ano');
-        exit;
-      } else {
-        $zprava = 'Email se nepodařilo odeslat. Zkontrolujte adresu.';
-      }
+        if ($uspech) {
+            //$zprava = 'Email byl úspěšně odeslán, brzy vám odpovíme.';
+            header('Location: https://iordinace.cz/kontakt?uspech=ano');
+            exit;
+        } else {
+            $zprava = 'Email se nepodařilo odeslat. Zkontrolujte adresu.';
+        }
 
-  } else {
-    $zprava = 'Formular neni spravne vyplneny';
-  }
+    } else {
+        $zprava = 'Formular neni spravne vyplneny';
+    }
 }
 
 ?>
 <?php // include 'include/db_spojeni.php';  ?>
 <?php
-  $main = new Main();
+$main = new Main();
 ?>
+<style>
+    .container-fluid {
+        max-width: 1400px;
+    }
+
+    article {
+        padding: 0 15px;
+    }
+</style>
 <!DOCTYPE html>
 <html class="no-js" lang="cs-cz">
-  <head>
-    <base href="/localhost" />
-    <meta charset="UTF-8" />
+<head>
+    <base href="/localhost"/>
+    <meta charset="UTF-8"/>
     <title>Medipraktik Zlín s.r.o. - <?= $titulek ?></title>
     <!-- <meta name="viewport" content="width=device-width"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="<?= $popis ?>" />
-    <meta name="keywords" content="<?= $klicova_slova ?>" />
+    <meta name="description" content="<?= $popis ?>"/>
+    <meta name="keywords" content="<?= $klicova_slova ?>"/>
     <meta http-equiv="Cache-control" content="public">
 
     <link href="../styles/lightbox.css" rel="stylesheet">
@@ -58,143 +67,147 @@ if($_POST) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Latest compiled and minified JavaScript -->
 
-    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="styles/style.css" type="text/css"/>
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700italic,700&subset=latin,cyrillic-ext,cyrillic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!-- test -->
     <!-- Cookie lišta-->
     <link rel="stylesheet" href="/styles/cookieconsent.css" type="text/css">
-  </head>
+</head>
 
-  <body class="<?php echo $main->bodyClass(); ?>">
-  <script src="/scripts/cookieconsent.js" type="text/javascript" charset="UTF-8"></script>
-  <script src="/scripts/cookieconsent-init.js" type="text/javascript" charset="UTF-8"></script>
+<body class="<?php echo $main->bodyClass(); ?>">
+<script src="/scripts/cookieconsent.js" type="text/javascript" charset="UTF-8"></script>
+<script src="/scripts/cookieconsent-init.js" type="text/javascript" charset="UTF-8"></script>
 
-  <!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-  <header>
+<header>
     <div class="container header-top">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-3 pull-left"><div class="logo"><a href="/">iOrdinace.cz</a></div></div>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="quick-contact">
-            <p><strong>Do ordinace: </strong>+420 732 941 611<br /><strong>MUDr. Přecechtělová</strong> +420 604 286 854</p>
-          </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 pull-left">
+                <div class="logo"><a href="/">iOrdinace.cz</a></div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="quick-contact">
+                    <p><strong>Do ordinace: </strong>+420 732 941 611<br/><strong>MUDr. Přecechtělová</strong> +420 604 286 854</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <div class="odhlaseni">
+                    <a href="https://cz.cgmlife.com/portal/?institution=013006943" class="objednani">Objednávka návštěvy</a>
+                    <?php
+                    if (isset($_SESSION['logged_user']) == 'yes') {
+                        echo '<p class="odhlaseni"><a href="addaktualita">Administrace</a><a href="logout?logout=yes"> | Odhlasit se</a></p>';
+                        if (isset($_GET['logout']) == 'yes') {
+                            header('Location: home');
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-3 col-md-3">
-          <div class="odhlaseni">
-            <a href="https://cz.cgmlife.com/portal/?institution=013006943" class="objednani">Objednávka návštěvy</a>
-            <?php
-              if(isset($_SESSION['logged_user']) == 'yes') {
-                echo '<p class="odhlaseni"><a href="addaktualita">Administrace</a><a href="logout?logout=yes"> | Odhlasit se</a></p>';
-                if(isset($_GET['logout']) == 'yes') {
-                  header('Location: home');
-                }
-              }
-            ?>
-          </div>
-        </div>
-      </div>
     </div>
 
     <nav class="navbar navbar-default">
-      <div class="container">
-        <div classl="row">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="home"><img src="../images/home.png" alt="home" /></a>
-          </div>
+        <div class="container">
+            <div classl="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="home"><img src="../images/home.png" alt="home"/></a>
+                </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-              <li class="li-prevence"><a href="preventivni-prohlidky">Prevenitivní prohlídky<span class="active"></span></a></li>
-              <li class="li-budouci-maminky"><a href="pro-budouci-maminky">Pro budoucí<span><br /></span>maminky<span class="active"></span></a></li>
-              <li class="li-ockovani"><a href="ockovani">Očkování<span class="active"></span></a></li>
-              <li class="li-sluzby"><a href="nadstandardni-sluzby">Nadstandardní služby<span class="active"></span></a></li>
-              <li class="li-pojistovny"><a href="smluvni-pojistovny">Pojišťovny<span class="active"></span></a></li>
-              <li class="li-odkazy"><a href="odkazy">Odkazy<span class="active"></span></a></li>
-              <li class="li-kontakt"><a href="kontakt">Kontakt<span class="active"></span></a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div>
-      </div><!-- /.container-fluid -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                        <li class="li-prevence"><a href="preventivni-prohlidky">Prevenitivní prohlídky<span class="active"></span></a></li>
+                        <li class="li-budouci-maminky"><a href="pro-budouci-maminky">Pro budoucí<span><br/></span>maminky<span class="active"></span></a></li>
+                        <li class="li-ockovani"><a href="ockovani">Očkování<span class="active"></span></a></li>
+                        <li class="li-sluzby"><a href="nadstandardni-sluzby">Nadstandardní služby<span class="active"></span></a></li>
+                        <li class="li-pojistovny"><a href="smluvni-pojistovny">Pojišťovny<span class="active"></span></a></li>
+                        <li class="li-odkazy"><a href="odkazy">Odkazy<span class="active"></span></a></li>
+                        <li class="li-kontakt"><a href="kontakt">Kontakt<span class="active"></span></a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div><!-- /.container-fluid -->
     </nav>
 
     <?php
-      if($_SERVER['REQUEST_URI'] === '/home') {
+    if ($_SERVER['REQUEST_URI'] === '/home') {
         include './include/slideshow.php';
-      }
-      else if ($_SERVER['REQUEST_URI'] == '/gallery') {
+    } else if ($_SERVER['REQUEST_URI'] == '/gallery') {
         echo '';
-      }
-      else {
+    } else {
         include './include/foto.php';
-      }
+    }
     ?>
 
-  </header>
+</header>
 
-  <div class="content container">
+<div class="content container-fluid">
 
-  <?php
-    if($_SERVER['REQUEST_URI'] == '/kontakt') {
-      include_once('./include/contact.php');
+    <?php
+    if ($_SERVER['REQUEST_URI'] == '/kontakt') {
+        include_once('./include/contact.php');
     }
-  ?>
+    ?>
 
     <main class="row">
-        <article>
-          <?php
-
+        <div>
+            <?php
             $logged_user = (isset($_SESSION['logged_user'])) ? $_SESSION['logged_user'] : '';
-
-            if($logged_user === 'yes') {
-              //echo 'Jste prihlasen';
+            if ($logged_user === 'yes') {
+                //echo 'Jste prihlasen';
             }
-
             // vložení aktuálního pohledu do šablony
             $this->kontroler->vypisPohled();
-          ?>
-        </article>
+            ?>
+        </div>
     </main>
 
-  <?php
-    if($_SERVER['REQUEST_URI'] != '/kontakt') {
-      include_once('./include/contact.php');
+    <?php
+    if ($_SERVER['REQUEST_URI'] != '/kontakt') {
+        include_once('./include/contact.php');
     }
-  ?>
+    ?>
 
-  </div>
+</div>
 
-  <?php include './include/gallery.php';  ?>
+<?php include './include/gallery.php'; ?>
 
-  <footer class="footer container">
+<footer class="footer container">
     <p>Copyright 2015 -- <a href="login" class="kontakt-login">Medipraktik Zlín s.r.o.</a> | Webové stránky, webdesing, CMS - <a href="http://www.jw.cz">www.jw.cz</a>
-      <p><a href="/gdpr">Informace související s GDPR.</a></p>
-  </footer>
+    <p><a href="/gdpr">Informace související s GDPR.</a></p>
+</footer>
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-72546246-1', 'auto');
     ga('send', 'pageview');
 
-  </script>
-  <script src="../scripts/lightbox.js"></script>
-  </body>
+</script>
+<script src="../scripts/lightbox.js"></script>
+</body>
 </html>
