@@ -17,6 +17,7 @@ class AktualitaEditKontroler extends Kontroler
 
         $aktualita = new \Addaktualita();
         $this->data['aktualita'] = $aktualita->detailAktuality($id);
+        $aktualita->upravitAktualitu($id);
 
         $this->pohled = 'aktualita-edit';
     }

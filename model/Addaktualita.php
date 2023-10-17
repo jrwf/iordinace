@@ -22,6 +22,22 @@ class Addaktualita
         }
     }
 
+    public function upravitAktualitu(int $id)
+    {
+        $mysql = $this->getSpojeni();
+        if ((isset($_POST['ok']))) {
+            // TODO - ošetřit vstupní data
+            $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
+            $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
+            $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
+            $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
+//            $mysql->query("insert into aktualita (nadpis, perex, obsah, zobrazit) values ('$nadpis','$perex','$obsah','$zobrazit')");
+            $mysql->query("update aktualita set nadpis = '$nadpis', perex = '$perex', obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = $id");
+            header('Location: admin');
+            exit();
+        }
+    }
+
     /**
      * @return bool|mysqli_result
      */
