@@ -1,42 +1,68 @@
 <style>
-    table, th, td {
+    table {
         width: 100%;
-        border: 1px solid silver;
-        border-collapse: collapse;
     }
-    th, td{
+
+    /*
+    th, td {
         padding: 10px 10px;
     }
-    th{
+
+    th {
         text-align: left;
     }
+
     table tr:nth-child(even) {
         background-color: #eee;
     }
+
     table tr:nth-child(odd) {
         background-color: #fff;
     }
+
     table th {
         background-color: black;
         color: white;
     }
+    */
+
+    .datum {
+        width: 110px;
+        text-align: center;
+    }
+
+    .edit,
+    .del {
+        width: 80px;
+        text-align: center;
+    }
 </style>
 
-<table>
-<tr>
-    <th>Nadpis</th>
-    <th>Upravit</th>
-    <th>Smazat</th>
-</tr>
-    <a href="/aktualita">Nová zpráva</a>
-<?php
-$seznamAktualit = $this->data['seznamAktualit'];
-foreach ($seznamAktualit as $key => $value) {
-    echo '<tr>';
-    echo '<td>' . $value['nadpis'] . '</td>';
-    echo '<td><a href="/aktualita-edit?idaktualita=' . $value['idaktualita'] . '">upravit</a></td>';
-    echo '<td><a href="/aktualita-delete?idaktualita=' . $value['idaktualita'] . '">smazat</a></td>';
-    echo '</tr>';
-}
-?>
-</table>
+<div class="row">
+    <div class="add-form col-md-11 center-block">
+        <a href="/aktualita-add">Nová zpráva</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th class="datum">Datum:</th>
+                <th>Nadpis:</th>
+                <th class="edit">Upravit:</th>
+                <th class="del">Smazat:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $seznamAktualit = $this->data['seznamAktualit'];
+            foreach ($seznamAktualit as $key => $value) {
+                echo '<tr>';
+                    echo '<td class="datum">' . $value['datum'] . '</td>';
+                    echo '<td><strong>' . $value['nadpis'] . '</strong></td>';
+                    echo '<td class="edit"><a href="/aktualita-edit?idaktualita=' . $value['idaktualita'] . '">upravit</a></td>';
+                    echo '<td class="del"><a href="/aktualita-delete?idaktualita=' . $value['idaktualita'] . '">smazat</a></td>';
+                echo '</tr>';
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+</div>

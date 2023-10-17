@@ -1,0 +1,53 @@
+<script src="https://cdn.tiny.cloud/1/g3jzocc6gvssfs8oyjmnsprmf5y1hlnhkv3absc3c7aemtoi/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        // selector: "textarea[name=obsah]",
+        menubar: false,
+        plugins: 'lists, code',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | code | removeformat',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    });
+</script>
+<style>
+    .btn-save {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+</style>
+<div class="row">
+    <div class="add-form col-md-11 center-block">
+        <div>
+            <h1>Vlozit aktualitu</h1>
+            <form action="" method="post">
+                <label for="">Nadpis:</label><br/>
+                <input class="form-control" type="text" name="nadpis" value="" size="50"/><br/>
+                <label for="">Perex:</label><br/>
+                <textarea class="form-control" name="perex" rows="10" cols="50"></textarea><br/>
+                <label for="">Obsah:</label><br/>
+                <textarea class="form-control" name="obsah" rows="40" cols="50"></textarea><br/>
+                <label for="">Zveřejnit: </label>'
+                <input type="checkbox" name="zobrazit" value="ano"/>
+                <?php
+                /*            echo '<label for="">Nadpis:</label><br />';
+                            echo '<input class="form-control" type="text" name="nadpis" value="' . $value['nadpis'] . '" size="50" /><br /><br />';
+                            echo '<label for="">Perex:</label><br />';
+                            echo '<textarea class="form-control" name="perex" rows="10" cols="50">' . $value['perex'] . '</textarea><br /><br />';
+                            echo '<label for="">Obsah:</label><br />';
+                            echo '<textarea class="form-control" name="obsah" rows="40" cols="50">' . $value['obsah'] . '</textarea><br /><br />';
+                            echo '<label for="">Zveřejnit: </label> ';
+                            echo '<input type="checkbox" name="zobrazit" value="ano" ';
+                            if ($value['zobrazit'] == 'ano') {
+                                echo 'checked';
+                            } else {
+                                echo '';
+                            }
+                            echo ' /><br /><br />';*/
+                ?>
+                <input class="btn btn-default btn-save" type="submit" name="ok" value="Uložit" style="float: right"/>
+            </form>
+        </div>
+    </div>
+</div>
+
