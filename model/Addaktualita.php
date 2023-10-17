@@ -7,7 +7,7 @@ class Addaktualita
      *
      * @return void
      */
-    public function vlozitAktualitu()
+    public function vlozitAktualitu(): void
     {
         $mysql = $this->getSpojeni();
         if ((isset($_POST['ok']))) {

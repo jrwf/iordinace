@@ -3,9 +3,9 @@
 class HomeKontroler extends Kontroler
 {
     /**
-     * @throws Exception
+     * @throws Exception|Exception
      */
-    public function zpracuj($parametry)
+    public function zpracuj($parametry): void
     {
         $this->hlavicka = array(
             'titulek' => 'ordinace dětské lékařky MUDr. Přecechtělové',
