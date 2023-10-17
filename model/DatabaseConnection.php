@@ -3,7 +3,7 @@
 class DatabaseConnection
 {
     private $host = 'database';
-    private $database = 'iordinace-mysql';
+    private $database = 'iordinace';
     private $username = 'root';
     private $password = 'root';
 
