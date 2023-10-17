@@ -11,14 +11,20 @@ class Addaktualita
     {
         $mysql = $this->getSpojeni();
         if ((isset($_POST['ok']))) {
+            // TODO - ošetřit vstupní data
             $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
             $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
             $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
             $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
             $mysql->query("insert into aktualita (nadpis, perex, obsah, zobrazit) values ('$nadpis','$perex','$obsah','$zobrazit')");
+            header('Location: admin');
+            exit();
         }
     }
 
+    /**
+     * @return bool|mysqli_result
+     */
     public function zobrazitAktualitu()
     {
         $mysql = $this->getSpojeni();
@@ -44,7 +50,7 @@ class Addaktualita
     {
         $mysql = $this->getSpojeni();
         try {
-            return $mysql->query("select idaktualita, nadpis, perex, obsah from aktualita")->fetch_all(MYSQLI_ASSOC);
+            return $mysql->query("select idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum from aktualita order by idaktualita desc")->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
             throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
         }
