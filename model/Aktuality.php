@@ -1,6 +1,6 @@
 <?php
 
-class Addaktualita
+class aktuality
 {
     /**
      * Vloží aktualitu do databáze

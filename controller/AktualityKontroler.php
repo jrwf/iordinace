@@ -15,7 +15,7 @@ class AktualityKontroler extends Kontroler
             'popis' => ''
         );
 
-        $aktuality = new Addaktualita();
+        $aktuality = new aktuality();
         $this->data['aktuality'] = $aktuality->seznamAktualit();
 
         $this->pohled = 'aktuality';
