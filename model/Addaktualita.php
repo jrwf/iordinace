@@ -92,7 +92,7 @@ class Addaktualita
         $mysql = $this->getSpojeni();
         try {
             $limitClause = $limit !== null ? "LIMIT $limit" : '';
-            return $mysql->query("SELECT orders, idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum FROM aktualita ORDER BY orders ASC $limitClause")->fetch_all(MYSQLI_ASSOC);
+            return $mysql->query("SELECT orders, idaktualita, nadpis, perex, obsah, DATE_FORMAT(created, '%e. %m. %Y') as datum FROM aktualita ORDER BY orders ASC $limitClause")->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
             throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
         }
