@@ -13,6 +13,7 @@ class DatabaseConnection
         $environment = getenv('ENVIRONMENT');
         $config = include dirname(__DIR__) . '/config.php';
         $envConfig = $config[$environment];
+
         $this->host = $envConfig['DB_HOST'];
         $this->database = $envConfig['DB_DATABASE'];
         $this->username = $envConfig['DB_USERNAME'];
