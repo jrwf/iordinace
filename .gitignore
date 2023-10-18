@@ -2,3 +2,5 @@
 /.idea/php.xml
 
 .docker*
+
+.env
