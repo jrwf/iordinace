@@ -1,26 +1,40 @@
 /* Barvy */
+:root {
+    --color-ruzova: #e872c0;
+    --color-tyrkysova: #48c1e0;
+}
 /* Fonts */
 /* font-family: 'Ubuntu', sans-serif; */
 /* font-family: 'Source Sans Pro', sans-serif; */
 .navbar.navbar-default {
-  margin: 0;
-  padding: 10px 0;
-  background-color: #48c1e0;
-  background-image: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  /* Brand */
-  /* Button */ }
-  .navbar.navbar-default a.navbar-brand {
-    width: auto; }
-  .navbar.navbar-default button.navbar-toggle:hover {
-    background-color: #27697a; }
-  .navbar.navbar-default button.navbar-toggle:focus {
-    background-color: #27697a; }
-  .navbar.navbar-default button.navbar-toggle .icon-bar {
-    background-color: white; }
-  .navbar.navbar-default ul.navbar-nav li {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #48c1e0;
+    background-image: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    /* Brand */
+    /* Button */
+}
+
+.navbar.navbar-default a.navbar-brand {
+    width: auto;
+}
+
+.navbar.navbar-default button.navbar-toggle:hover {
+    background-color: #27697a;
+}
+
+.navbar.navbar-default button.navbar-toggle:focus {
+    background-color: #27697a;
+}
+
+.navbar.navbar-default button.navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar.navbar-default ul.navbar-nav li {
     color: white;
     /*&.active {
       a {
@@ -28,150 +42,211 @@
         background-color: $modra;
         color: white;
       }
-    }*/ }
-    .navbar.navbar-default ul.navbar-nav li a {
-      color: white;
-      text-transform: uppercase;
-      text-align: center;
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 12px;
-      width: 125px;
-      height: 50px;
-      line-height: 200%;
-      vertical-align: middle;
-      border-left: 1px solid #9ed2e0;
-      display: block;
-      padding: 0 5px !important;
-      position: relative;
-      /*float: left;*/ }
-      .navbar.navbar-default ul.navbar-nav li a span.active {
-        display: block;
-        width: 100%;
-        height: 8px;
-        position: absolute;
-        top: -18px;
-        left: 0; }
-    .navbar.navbar-default ul.navbar-nav li:hover a {
-      color: #27697a; }
+    }*/
+}
+
+.navbar.navbar-default ul.navbar-nav li a {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    width: 125px;
+    height: 50px;
+    line-height: 200%;
+    vertical-align: middle;
+    border-left: 1px solid #9ed2e0;
+    display: block;
+    padding: 0 5px !important;
+    position: relative;
+    /*float: left;*/
+}
+
+.navbar.navbar-default ul.navbar-nav li a span.active {
+    display: block;
+    width: 100%;
+    height: 8px;
+    position: absolute;
+    top: -18px;
+    left: 0;
+}
+
+.navbar.navbar-default ul.navbar-nav li:hover a {
+    color: #27697a;
+}
 
 .page-preventivni-prohlidky li.li-prevence a {
-  color: #27697a !important; }
-  .page-preventivni-prohlidky li.li-prevence a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-preventivni-prohlidky li.li-prevence a span.active {
+    background-color: #9fc94b;
+}
 
 .page-pro-budouci-maminky li.li-budouci-maminky a {
-  color: #27697a !important; }
-  .page-pro-budouci-maminky li.li-budouci-maminky a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-pro-budouci-maminky li.li-budouci-maminky a span.active {
+    background-color: #9fc94b;
+}
 
 .page-ockovani li.li-ockovani a {
-  color: #27697a !important; }
-  .page-ockovani li.li-ockovani a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-ockovani li.li-ockovani a span.active {
+    background-color: #9fc94b;
+}
 
 .page-nadstandardni-sluzby li.li-sluzby a {
-  color: #27697a !important; }
-  .page-nadstandardni-sluzby li.li-sluzby a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-nadstandardni-sluzby li.li-sluzby a span.active {
+    background-color: #9fc94b;
+}
 
 .page-pojistovny li.li-pojistovny a {
-  color: #27697a !important; }
-  .page-pojistovny li.li-pojistovny a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-pojistovny li.li-pojistovny a span.active {
+    background-color: #9fc94b;
+}
 
 .page-odkazy li.li-odkazy a {
-  color: #27697a !important; }
-  .page-odkazy li.li-odkazy a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-odkazy li.li-odkazy a span.active {
+    background-color: #9fc94b;
+}
 
 .page-kontakt li.li-kontakt a {
-  color: #27697a !important; }
-  .page-kontakt li.li-kontakt a span.active {
-    background-color: #9fc94b; }
+    color: #27697a !important;
+}
+
+.page-kontakt li.li-kontakt a span.active {
+    background-color: #9fc94b;
+}
 
 @media (max-width: 768px) {
-  .navbar-collapse ul.nav.navbar-nav li {
-    padding-top: 5px;
-    padding-bottom: 5px; }
+    .navbar-collapse ul.nav.navbar-nav li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
     .navbar-collapse ul.nav.navbar-nav li a {
-      display: inline;
-      width: 100%;
-      line-height: 180%;
-      padding-top: 15px;
-      padding-bottom: 15px; }
-      .navbar-collapse ul.nav.navbar-nav li a span {
+        display: inline;
+        width: 100%;
+        line-height: 180%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .navbar-collapse ul.nav.navbar-nav li a span {
         display: none !important;
-        background: #9fc94b; } }
+        background: #9fc94b;
+    }
+}
+
 .hlaska {
-  padding: 15px 25px 15px 0;
-  font-size: 1.5em;
-  color: #27697a;
-  margin-bottom: 0; }
+    padding: 15px 25px 15px 0;
+    font-size: 1.5em;
+    color: #27697a;
+    margin-bottom: 0;
+}
 
 body {
-  /*font-size: 14px;*/ }
+    /*font-size: 14px;*/
+}
 
 h1, h2, h3, h4 {
-  font-family: 'Ubuntu', sans-serif;
-  color: black; }
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+}
 
 h1 {
-  margin: 0 0 1em 0;
-  padding: 0; }
+    margin: 0 0 1em 0;
+    padding: 0;
+}
 
 h2 {
-  color: #48c1e0;
-  font-size: 1.8em; }
+    color: #48c1e0;
+    font-size: 1.8em;
+}
 
 h3 {
-  font-size: 1.3em; }
+    font-size: 1.3em;
+}
 
 p, li, table, td {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-family: Arial, sans-serif;
-  font-size: 1.05em;
-  line-height: 150%; }
+    font-family: 'Source Sans Pro', sans-serif;
+    font-family: Arial, sans-serif;
+    font-size: 1.05em;
+    line-height: 150%;
+}
 
 li {
-  margin-bottom: 7px; }
+    margin-bottom: 7px;
+}
 
 table tr td {
-  font-size: 1em;
-  padding: 3px 7px; }
+    font-size: 1em;
+    padding: 3px 7px;
+}
 
 a {
-  color: #48c1e0; }
+    color: #48c1e0;
+}
 
 header {
-  width: 100%; }
+    width: 100%;
+}
 
 .header-top {
-  height: 80px;
-  padding-top: 20px; }
-  .header-top .pull-left .logo {
+    height: 80px;
+    padding-top: 20px;
+}
+
+.header-top .pull-left .logo {
     font-size: 2em;
     color: #48c1e0;
     font-weight: bold;
-    font-family: 'Ubuntu', sans-serif; }
-    .header-top .pull-left .logo a:hover {
-      color: #9fc94b; }
-  .header-top .quick-contact {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.header-top .pull-left .logo a:hover {
+    color: #9fc94b;
+}
+
+.header-top .quick-contact {
     padding-left: 40px;
     background-image: url("../images/mobil.png");
-    background-repeat: no-repeat; }
-  @media (max-width: 768px) {
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
     .header-top .quick-contact {
-      /*background-image: none;*/
-      /*padding-left: 0;*/
-      margin-top: 10px; } }
-  .header-top .odhlaseni p {
+        /*background-image: none;*/
+        /*padding-left: 0;*/
+        margin-top: 10px;
+    }
+}
+
+.header-top .odhlaseni p {
     padding: 10px 15px;
     color: #27697a !important;
     border-radius: 5px;
-    font-weight: bold; }
-  .header-top .odhlaseni a {
-    text-decoration: none; }
-  .header-top .odhlaseni .objednani {
+    font-weight: bold;
+}
+
+.header-top .odhlaseni a {
+    text-decoration: none;
+}
+
+.header-top .odhlaseni .objednani {
     display: block;
     padding: 7px;
     margin-top: 7px;
@@ -181,112 +256,166 @@ header {
     color: white;
     text-transform: uppercase;
     font-size: 0.9em;
-    float: right; }
-    .header-top .odhlaseni .objednani:hover {
-      background-color: #48c1e0;
-      color: #27697a;
-      text-decoration: none; }
-  @media (max-width: 992px) {
-    .header-top .odhlaseni .objednani {
-      font-size: 11px;
-      float: left;
-      margin-bottom: 20px; } }
+    float: right;
+}
+
+.header-top .odhlaseni .objednani:hover {
+    background-color: #48c1e0;
+    color: #27697a;
+    text-decoration: none;
+}
 
 @media (max-width: 992px) {
-  .header-top {
-    height: auto; } }
+    .header-top .odhlaseni .objednani {
+        font-size: 11px;
+        float: left;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-top {
+        height: auto;
+    }
+}
+
 .foto.container {
-  /*padding-left: 0;*/
-  /*padding-right: 0;*/ }
-  .foto.container .col-md-12 {
-    /*padding-left: 0;*/ }
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
+}
+
+.foto.container .col-md-12 {
+    /*padding-left: 0;*/
+}
 
 @media (max-width: 995px) {
-  ul.navbar-nav li a {
-    font-size: 11px !important;
-    width: 95px !important;
-    padding-left: 0;
-    padding-right: 0;
-    display: inline; } }
+    ul.navbar-nav li a {
+        font-size: 11px !important;
+        width: 95px !important;
+        padding-left: 0;
+        padding-right: 0;
+        display: inline;
+    }
+}
+
 @media (max-width: 750px) {
-  ul.navbar-nav li a {
-    width: auto; } }
+    ul.navbar-nav li a {
+        width: auto;
+    }
+}
+
 @media (min-width: 1200px) {
-  .container {
-    width: 990px; } }
+    .container {
+        width: 990px;
+    }
+}
+
 main {
-  min-height: 500px; }
-  main article {
-    padding: 50px 0; }
-    main article .illustrace {
-      margin-top: 80px; }
+    min-height: 500px;
+}
+
+main article {
+    padding: 50px 0;
+}
+
+main article .illustrace {
+    margin-top: 80px;
+}
 
 aside {
-  background-color: red; }
+    background-color: red;
+}
 
 .page-kontakt-block {
-  margin-top: 100px; }
-  .page-kontakt-block .address {
+    margin-top: 100px;
+}
+
+.page-kontakt-block .address {
     padding: 15px;
     background-image: url("../images/kontaktni_informace.png");
     background-repeat: no-repeat;
     background-position: 15px 35px;
     background-color: #ecfbff;
-    padding-left: 80px; }
-    .page-kontakt-block .address h4 {
-      font-size: 1.1em; }
-  .page-kontakt-block .surgery-hours {
+    padding-left: 80px;
+}
+
+.page-kontakt-block .address h4 {
+    font-size: 1.1em;
+}
+
+.page-kontakt-block .surgery-hours {
     padding: 15px;
     background-image: url("../images/ordinacni_hodiny.png");
     background-repeat: no-repeat;
     padding-left: 80px;
     background-position: 15px 35px;
     background-color: #ecfbff;
-    padding-left: 80px; }
-    .page-kontakt-block .surgery-hours table tr td {
-      padding: 10px 20px 0px 0px;
-      vertical-align: top;
-      /*font-size: 12px;*/ }
-      .page-kontakt-block .surgery-hours table tr td.poznamka {
-        /*padding: 0 7px !important;*/
-        padding-top: 0;
-        font-size: 11px;
-        line-height: 100% !important;
-        color: #27697a; }
-      .page-kontakt-block .surgery-hours table tr td span {
-        padding: 0 !important;
-        margin: 0 !important; }
-  .page-kontakt-block .address,
-  .page-kontakt-block .surgery-hours {
-    min-height: 340px; }
+    padding-left: 80px;
+}
+
+.page-kontakt-block .surgery-hours table tr td {
+    padding: 10px 20px 0px 0px;
+    vertical-align: top;
+    /*font-size: 12px;*/
+}
+
+.page-kontakt-block .surgery-hours table tr td.poznamka {
+    /*padding: 0 7px !important;*/
+    padding-top: 0;
+    font-size: 11px;
+    line-height: 100% !important;
+    color: #27697a;
+}
+
+.page-kontakt-block .surgery-hours table tr td span {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.page-kontakt-block .address,
+.page-kontakt-block .surgery-hours {
+    min-height: 340px;
+}
 
 .gallery-block {
-  margin: 50px 0;
-  padding: 30px 0 100px 0;
-  /*height: 300px;*/
-  /*background-color: #f6f6f6;*/
-  background-color: #eaeaea; }
-  .gallery-block h3 {
+    margin: 50px 0;
+    padding: 30px 0 100px 0;
+    /*height: 300px;*/
+    /*background-color: #f6f6f6;*/
+    background-color: #eaeaea;
+}
+
+.gallery-block h3 {
     background-image: url("../images/nase_ordinace.png");
     background-repeat: no-repeat;
     padding-left: 70px;
     height: 60px;
     line-height: 60px;
-    margin-bottom: 30px; }
-  .gallery-block .images-row {
+    margin-bottom: 30px;
+}
+
+.gallery-block .images-row {
     padding-left: 15px;
-    padding-right: 15px; }
-  .gallery-block .last-col {
-    padding-right: 15px; }
-  .gallery-block .col-xs-6,
-  .gallery-block .col-sm-3,
-  .gallery-block .col-md-3 {
+    padding-right: 15px;
+}
+
+.gallery-block .last-col {
+    padding-right: 15px;
+}
+
+.gallery-block .col-xs-6,
+.gallery-block .col-sm-3,
+.gallery-block .col-md-3 {
     padding-left: 1px;
     padding-right: 0px;
-    padding-bottom: 1px; }
-  .gallery-block a {
-    width: auto; }
-  .gallery-block a.gallery-link {
+    padding-bottom: 1px;
+}
+
+.gallery-block a {
+    width: auto;
+}
+
+.gallery-block a.gallery-link {
     display: block;
     background-color: #48c1e0;
     color: white;
@@ -295,116 +424,201 @@ aside {
     padding: 8px 20px;
     border-radius: 4px;
     clear: both;
-    text-align: center; }
+    text-align: center;
+}
 
 .page-gallery .gallery-block {
-  background-color: transparent; }
+    background-color: transparent;
+}
 
 footer {
-  margin-top: 50px;
-  margin-bottom: 150px; }
-  footer p {
-    text-align: center; }
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+footer p {
+    text-align: center;
+}
 
 .home-slideshow {
-  background-color: #48c1e0;
-  background-image: url("../images/homepage-slider-pozadi.jpg");
-  background-repeat: repeat; }
-  .home-slideshow .carousel.slide {
+    background-color: #48c1e0;
+    background-image: url("../images/homepage-slider-pozadi.jpg");
+    background-repeat: repeat;
+}
+
+.home-slideshow .carousel.slide {
     /*margin-top: 10px;*/
-    margin-bottom: 30px; }
-  .home-slideshow .item {
-    border: 7px solid #7fd3eb; }
-    .home-slideshow .item .carousel-caption {
-      font-size: 2.5em; }
+    margin-bottom: 30px;
+}
+
+.home-slideshow .item {
+    border: 7px solid #7fd3eb;
+}
+
+.home-slideshow .item .carousel-caption {
+    font-size: 2.5em;
+}
 
 .home-page .persons {
-  margin-bottom: 5em; }
+    margin-bottom: 5em;
+}
+
 .home-page .osoba h3 {
-  text-align: center; }
+    text-align: center;
+}
+
 .home-page .osoba img {
-  text-align: center;
-  margin: 0 auto 15px auto; }
+    text-align: center;
+    margin: 0 auto 15px auto;
+}
+
 .home-page .osoba p {
-  text-align: center;
-  font-style: italic;
-  padding: 0 1.5em; }
+    text-align: center;
+    font-style: italic;
+    padding: 0 1.5em;
+}
+
 .home-page .home-introduction {
-  padding: 40px 25px;
-  background-color: #e6ffb5; }
-  .home-page .home-introduction .introduction-list {
-    margin-bottom: 2em; }
-  .home-page .home-introduction ul li span {
+    padding: 40px 25px;
+    background-color: #e6ffb5;
+}
+
+.home-page .home-introduction .introduction-list {
+    margin-bottom: 2em;
+}
+
+.home-page .home-introduction ul li span {
     background-color: #9fc94b;
     border-radius: 50em;
     padding: 15px 20px;
     color: white;
-    font-weight: bold; }
-  .home-page .home-introduction h2 {
+    font-weight: bold;
+}
+
+.home-page .home-introduction h2 {
     line-height: 100%;
     margin: 0 0 20px 0;
-    color: black; }
-  .home-page .home-introduction .item-text {
-    margin-bottom: 15px; }
-    .home-page .home-introduction .item-text .number {
-      background-color: #9fc94b;
-      border-radius: 50em;
-      padding: 15px 20px;
-      color: white;
-      font-weight: bold;
-      width: auto;
-      display: inline;
-      float: left;
-      margin-right: 20px; }
-    .home-page .home-introduction .item-text p {
-      margin-left: 70px; }
+    color: black;
+}
+
+.home-page .home-introduction .item-text {
+    margin-bottom: 15px;
+}
+
+.home-page .home-introduction .item-text .number {
+    background-color: #9fc94b;
+    border-radius: 50em;
+    padding: 15px 20px;
+    color: white;
+    font-weight: bold;
+    width: auto;
+    display: inline;
+    float: left;
+    margin-right: 20px;
+}
+
+.home-page .home-introduction .item-text p {
+    margin-left: 70px;
+}
 
 .page-kontakt {
-  /* Google mapa */ }
-  .page-kontakt form {
-    /*margin-top: 40px;*/ }
-  .page-kontakt img.lekarsky-dum {
-    margin-top: 25px; }
-  .page-kontakt .google-maps {
+    /* Google mapa */
+}
+
+.page-kontakt form {
+    /*margin-top: 40px;*/
+}
+
+.page-kontakt img.lekarsky-dum {
+    margin-top: 25px;
+}
+
+.page-kontakt .google-maps {
     position: relative;
     padding-bottom: 50%;
     height: 0;
-    overflow: hidden; }
-  .page-kontakt .google-maps iframe {
+    overflow: hidden;
+}
+
+.page-kontakt .google-maps iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100% !important;
-    height: 100% !important; }
+    height: 100% !important;
+}
 
 .kontakt-login {
-  color: #333; }
-  .kontakt-login:hover {
+    color: #333;
+}
+
+.kontakt-login:hover {
     text-decoration: none;
-    color: #333; }
+    color: #333;
+}
 
 .page-home .home-standardy a {
-  color: #27697a;
-  text-decoration: underline; }
+    color: #27697a;
+    text-decoration: underline;
+}
 
 .add-form,
 .login-form {
-  float: none; }
-  .add-form label,
-  .login-form label {
+    float: none;
+}
+
+.add-form label,
+.login-form label {
     color: #48c1e0;
     font-size: 1.5em;
-    font-weight: normal; }
+    font-weight: normal;
+}
 
 .home-aktualita {
-  margin: 0 auto 60px auto; }
-  .home-aktualita .home-aktualita-in {
-    padding: 0 20%; }
-    .home-aktualita .home-aktualita-in p {
-      font-size: 1.3em; }
-  @media (max-width: 800px) {
+    margin: 0 auto 60px auto;
+}
+
+.home-aktualita .home-aktualita-in {
+    padding: 0 20%;
+}
+
+.home-aktualita .home-aktualita-in p {
+    font-size: 1.3em;
+}
+
+@media (max-width: 800px) {
     .home-aktualita .home-aktualita-in {
-      padding: 0 10%; } }
-  @media (max-width: 400px) {
+        padding: 0 10%;
+    }
+}
+
+@media (max-width: 400px) {
     .home-aktualita .home-aktualita-in {
-      padding: 0 5%; } }
+        padding: 0 5%;
+    }
+}
+
+/* Odkaz někam zpět */
+.back {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.back .material-symbols-outlined {
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+}
+
+.datum {
+    color: var(--color-ruzova);
+}
+
+.datum .material-symbols-outlined {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
