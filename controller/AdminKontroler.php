@@ -7,16 +7,23 @@ class AdminKontroler extends Kontroler
      */
     public function zpracuj($parametry)
     {
+        $order = $_POST;
+        $aktuality = new Addaktualita();
+
+        if ($order && is_array($order)) {
+            $aktuality->updateAktualitaOrder($order);
+        }
+
         $this->hlavicka = array(
             'titulek' => 'administrace',
             'klicova_slova' => '',
             'popis' => ''
         );
 
-        $addaktuality = new \Addaktualita();
+        $aktuality = new \Addaktualita();
 
         $this->data['administrace'] = 'administrace je tady';
-        $this->data['seznamAktualit'] = $addaktuality->seznamAktualit();
+        $this->data['seznamAktualit'] = $aktuality->seznamAktualit();
 
         $this->pohled = 'admin';
     }

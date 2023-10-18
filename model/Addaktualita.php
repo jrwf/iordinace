@@ -22,7 +22,11 @@ class Addaktualita
         }
     }
 
-    public function upravitAktualitu(int $id)
+    /**
+     * @param int $id
+     * @return void
+     */
+    public function updateAktualitu(int $id): void
     {
         $mysql = $this->getSpojeni();
         if ((isset($_POST['ok']))) {
@@ -31,7 +35,6 @@ class Addaktualita
             $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
             $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
             $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
-//            $mysql->query("insert into aktualita (nadpis, perex, obsah, zobrazit) values ('$nadpis','$perex','$obsah','$zobrazit')");
             $mysql->query("update aktualita set nadpis = '$nadpis', perex = '$perex', obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = $id");
             header('Location: admin');
             exit();
@@ -39,9 +42,28 @@ class Addaktualita
     }
 
     /**
+     * Upraví pořadí aktuality.
+     *
+     * @param array $data
+     * @return void
+     */
+    public function updateAktualitaOrder(array $data): void
+    {
+        $mysql = $this->getSpojeni(); // TODO - přesunout do constructoru.
+        $ids = $data['order'];
+        $orders = array_combine(range(1, count($ids)), $ids);
+//        $test = $mysql->query("update aktualita set order = 1 where idaktualita = 22");
+        foreach ($orders as $id => $poradi) {
+            $poradi = (int) $poradi;
+//            $mysql->query("update aktualita set order = 1 where idaktualita = 22");
+            $mysql->query("update aktualita set orders = $id where idaktualita = $poradi");
+        }
+    }
+
+    /**
      * @return bool|mysqli_result
      */
-    public function zobrazitAktualitu()
+    public function zobrazitAktualitu(): mysqli_result|bool
     {
         $mysql = $this->getSpojeni();
         $data = $mysql->query("select zobrazit from aktualita where idaktualita = 1");
@@ -79,7 +101,7 @@ class Addaktualita
         $mysql = $this->getSpojeni();
         try {
             $limitClause = $limit !== null ? "LIMIT $limit" : '';
-            return $mysql->query("SELECT idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum FROM aktualita ORDER BY idaktualita DESC $limitClause")->fetch_all(MYSQLI_ASSOC);
+            return $mysql->query("SELECT idaktualita, nadpis, perex, obsah, DATE_FORMAT(ts, '%e. %m. %Y') as datum FROM aktualita ORDER BY orders ASC $limitClause")->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
             throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
         }
