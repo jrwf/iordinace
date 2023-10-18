@@ -1,14 +1,13 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <style>
-    .back {
-        display: block;
-        margin-bottom: 30px;
-        font-size: 17px;
-    }
-
     .datum {
         font-size: 17px;
         margin-bottom: 20px;
         display: block;
+    }
+
+    .aktualita-detail h1 {
+        color: var(--color-tyrkysova);
     }
 
     .aktualita-detail p {
@@ -20,12 +19,18 @@
         margin-bottom: 40px;
         font-weight: bold;
     }
+
+    .obsah {
+        margin-bottom: 100px;
+    }
 </style>
+
 <div class="add-form col-md-11 center-block aktualita-detail">
-    <a href="/home" class="back">Zpět</a>
+    <a href="/home" class="back"><span class="material-symbols-outlined">reply</span>Zpět</a>
     <?php $aktualita = $this->data['aktualita']; ?>
     <h1><?php echo $aktualita['nadpis']; ?></h1>
-    <strong class="datum"><?php echo $aktualita['datum']; ?></strong>
+    <strong class="datum"><span class="material-symbols-outlined">calendar_month</span><?php echo $aktualita['datum']; ?></strong>
     <p class="perex"><?php echo $aktualita['perex']; ?></p>
     <div class="obsah"><?php echo $aktualita['obsah']; ?></div>
+    <a href="/home" class="back"><span class="material-symbols-outlined">reply</span>Zpět</a>
 </div>
