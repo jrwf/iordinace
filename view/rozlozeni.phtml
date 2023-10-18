@@ -108,7 +108,7 @@ $main = new Main();
                     <a href="https://cz.cgmlife.com/portal/?institution=013006943" class="objednani">Objednávka návštěvy</a>
                     <?php
                     if (isset($_SESSION['logged_user']) == 'yes') {
-                        echo '<p class="odhlaseni"><a href="addaktualita">Administrace</a><a href="logout?logout=yes"> | Odhlasit se</a></p>';
+                        echo '<p class="odhlaseni"><a href="admin">Administrace</a><a href="logout?logout=yes"> | Odhlasit se</a></p>';
                         if (isset($_GET['logout']) == 'yes') {
                             header('Location: home');
                         }
