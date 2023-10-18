@@ -6,7 +6,7 @@ class AktualitaKontroler extends Kontroler
     {
         $idaktualita = (int)$_GET['idaktualita'];
 
-        $aktualita = new \Addaktualita();
+        $aktualita = new \aktuality();
 
         $this->hlavicka = array(
             'titulek' => '',

@@ -13,7 +13,7 @@ class HomeKontroler extends Kontroler
             'popis' => ''
         );
 
-        $addaktualita = new Addaktualita();
+        $addaktualita = new aktuality();
 
         $this->data['jmeno'] = 'Nejake jmeno';
         $this->data['admin'] = 'Administrator';

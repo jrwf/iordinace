@@ -10,7 +10,7 @@ class AktualitaDeleteKontroler extends Kontroler
     {
         $id = (int)$_GET['idaktualita'];
 
-        $aktualita = new \Addaktualita();
+        $aktualita = new \aktuality();
         $aktualita->smazatAktualitu($id);
         header('Location: admin');
     }

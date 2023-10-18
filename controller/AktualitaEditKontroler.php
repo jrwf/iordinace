@@ -15,7 +15,7 @@ class AktualitaEditKontroler extends Kontroler
             'popis' => ''
         );
 
-        $aktualita = new \Addaktualita();
+        $aktualita = new \aktuality();
         $this->data['aktualita'] = $aktualita->detailAktuality($id);
         $aktualita->updateAktualitu($id);
 

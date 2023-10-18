@@ -14,7 +14,7 @@ class AktualitaAddKontroler extends Kontroler
             'popis' => ''
         );
 
-        $aktualita = new Addaktualita();
+        $aktualita = new aktuality();
         $aktualita->vlozitAktualitu();
 
         $this->pohled = 'aktualita-add';

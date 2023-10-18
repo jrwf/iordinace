@@ -8,7 +8,7 @@ class AdminKontroler extends Kontroler
     public function zpracuj($parametry)
     {
         $order = $_POST;
-        $aktuality = new Addaktualita();
+        $aktuality = new aktuality();
 
         if ($order && is_array($order)) {
             $aktuality->updateAktualitaOrder($order);
@@ -20,7 +20,7 @@ class AdminKontroler extends Kontroler
             'popis' => ''
         );
 
-        $aktuality = new \Addaktualita();
+        $aktuality = new \aktuality();
 
         $this->data['administrace'] = 'administrace je tady';
         $this->data['seznamAktualit'] = $aktuality->seznamAktualit();
