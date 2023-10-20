@@ -65,7 +65,7 @@ class aktuality
      * @param int $idaktualita
      * @return array|false|null
      */
-    public function vypsatAktualitu(int $idaktualita): false|array|null
+    public function vypsatAktualitu(int $idaktualita)
     {
         $mysql = $this->getSpojeni();
         $mysql->set_charset('utf8');
