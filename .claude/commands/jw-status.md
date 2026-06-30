@@ -13,151 +13,76 @@ git diff --stat
 - Uncommitted changes (červené soubory)
 - Staged changes (zelené soubory)
 - Untracked files (nové soubory)
-- Commits ahead of origin (kolik commitů čeká na push)
+- Commits ahead of origin
 
-## 2. Drupal Configuration Status
+## 2. Docker Status
 
-**Zkontroluj config změny:**
+**Zkontroluj běžící kontejnery:**
 ```bash
-vendor/bin/drush config:status
-# Alias: vendor/bin/drush cst
+docker compose ps
 ```
 
-**Možné výsledky:**
-- `Only in DB` - Config v databázi, není v souborech → **Potřeba export (`drush cex`)**
-- `Only in sync` - Config v souborech, není v DB → **Potřeba import (`drush cim`)**
-- `Different` - Config se liší → **Zkontroluj rozdíly**
-- `Identical` - Vše v pořádku ✅
-
-## 3. Database Updates Status
-
-**Zkontroluj pending database updates:**
+**Zkontroluj logy aplikace:**
 ```bash
-vendor/bin/drush updatedb:status
-# Alias: vendor/bin/drush updbst
+docker compose logs --tail=20 app
 ```
 
-**Pokud jsou pending updates:**
+## 3. PHP Error Log
+
+**Zkontroluj chyby Apache:**
 ```bash
-vendor/bin/drush updb -y
-vendor/bin/drush cr
-vendor/bin/drush cex -y
+docker compose exec app tail -n 30 /var/log/apache2/error.log
 ```
 
-## 4. Module Status
+**Nebo přímo v prohlížeči** — zapni zobrazování chyb v `config.php` (pouze lokálně).
 
-**Zkontroluj aktivní moduly:**
+## 4. Databáze
+
+**Test připojení:**
 ```bash
-vendor/bin/drush pm:list --type=module --status=enabled
+docker compose exec database mysql -uroot -proot -e "SELECT 1" iordinace
 ```
 
-**Zkontroluj, zda nejsou dev moduly na produkci:**
+**Zkontroluj tabulky:**
 ```bash
-vendor/bin/drush pm:list --status=enabled | grep -E "(devel|webprofiler|kint)"
+docker compose exec database mysql -uroot -proot -e "SHOW TABLES" iordinace
 ```
 
-**Pokud jsou dev moduly na produkci → PROBLÉM! ⚠️**
-
-## 5. Cache Status
-
-**Vyčisti cache (vždy před exportem config):**
-```bash
-vendor/bin/drush cr
-```
-
-## 6. Composer Status
-
-**Zkontroluj, zda jsou všechny dependencies aktuální:**
-```bash
-composer validate
-composer outdated --direct
-```
+## 5. Composer / Dependencies
 
 **Zkontroluj security issues:**
 ```bash
 composer audit
 ```
 
-## 7. Error Log
-
-**Zkontroluj poslední chyby v Drupal logu:**
-```bash
-vendor/bin/drush watchdog:show --severity=Error --count=10
-# Alias: vendor/bin/drush wd-show
-```
-
-**Nebo v prohlížeči:**
-- `/admin/reports/dblog`
-
-## 8. System Status
-
-**Zkontroluj celkový stav systému:**
-```bash
-vendor/bin/drush status
-```
-
-**Důležité parametry:**
-- Drupal version
-- Database status
-- PHP version
-- Files directory permissions
-- Settings file
-
-## 9. Připravenost na Commit
+## 6. Připravenost na Commit
 
 **✅ Ready pro commit pokud:**
-- [ ] `git status` - jasné co se commituje
-- [ ] `drush cst` - config synchronized (Identical)
-- [ ] `drush updbst` - no pending updates
-- [ ] `drush wd-show` - žádné kritické chyby
-- [ ] Cache vyčištěna (`drush cr`)
-- [ ] Config exportována (`drush cex`)
+- [ ] `git status` — jasné co se commituje
+- [ ] Žádné PHP chyby v error logu
+- [ ] Web funguje v prohlížeči (http://localhost)
+- [ ] Žádné citlivé údaje (hesla, API klíče) v kódu
 
 **Pokud ANO → Zavolej `/jw-commit`**
 
-## 10. Připravenost na Deployment
+## 7. Připravenost na Deployment
 
 **✅ Ready pro deployment pokud:**
 - [ ] Všechny změny commitnuty
 - [ ] Push do remote repozitáře dokončen
-- [ ] CI/CD testy prošly (GitHub Actions)
 - [ ] Změny otestovány lokálně
-- [ ] Config změny jsou správné
 
 **Pokud ANO → Zavolej `/jw-deploy`**
 
 ## Quick Commands
 
 ```bash
-# Kompletní kontrola před commitem
-vendor/bin/drush cr && vendor/bin/drush cex -y && git status
-
-# Kompletní kontrola konfigurace
-vendor/bin/drush cst && vendor/bin/drush updbst
-
-# Zkontroluj všechny logy
-vendor/bin/drush wd-show --severity=Error --count=20
-
-# Zkontroluj git changes s detaily
+# Git přehled
 git status && git diff --stat && git log --oneline -5
+
+# Docker stav
+docker compose ps && docker compose logs --tail=10 app
+
+# Test webu
+curl -sI http://localhost/
 ```
-
-## Časté problémy a řešení
-
-**"Only in DB" config:**
-→ `vendor/bin/drush cex -y`
-
-**"Only in sync" config:**
-→ `vendor/bin/drush cim -y` (POZOR: importuje config z souborů!)
-
-**Pending database updates:**
-→ `vendor/bin/drush updb -y`
-
-**Uncommitted changes:**
-→ Zkontroluj `git diff`, pak `/jw-commit`
-
-**Cache problémy:**
-→ `vendor/bin/drush cr`
-
-**Permission issues:**
-→ `chmod -R 755 web/sites/default/files`

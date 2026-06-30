@@ -1,85 +1,83 @@
 ---
-description: Provede komplexní SEO audit webu hotelmalina.com
+description: Provede komplexní SEO audit webu
 ---
 
-# SEO Audit - Hotel Malina
+# SEO Audit
 
-Proveď kompletní SEO audit webu podle checklistu v `docs/seo.md`.
+Proveď kompletní SEO audit webu podle checklistu.
 
 ## Co udělat:
 
 ### 1. Určit prostředí
 Zjisti, jestli testuješ:
-- **Localhost** (http://hotelmalina.loc) - základní SEO audit
-- **Produkci** (https://hotelmalina.com) - kompletní audit včetně výkonu
+- **Localhost** (http://localhost) — základní technické SEO
+- **Produkci** (https://hotelmalina.com nebo jiná doména) — kompletní audit
 
 ### 2. Localhost audit (základní)
 
-Zkontroluj:
-1. **Drupal konfigurace**
-   - Nainstalované SEO moduly (Metatag, Pathauto, Simple Sitemap)
-   - Konfigurace meta tagů
-   - URL aliasy
-   - XML sitemap nastavení
-
-2. **HTML analýza**
-   - Načti homepage a důležité stránky
+1. **HTML analýza**
+   - Načti homepage a důležité stránky přes `curl`
    - Zkontroluj meta tagy (title, description)
-   - Ověř strukturu nadpisů (H1-H6)
+   - Ověř strukturu nadpisů (H1–H6)
    - Zkontroluj alt texty u obrázků
    - Canonical URLs
 
-3. **Technické SEO**
-   - robots.txt obsah
-   - XML sitemap dostupnost
+2. **Technické SEO**
+   - robots.txt obsah: `curl http://localhost/robots.txt`
+   - XML sitemap: `curl http://localhost/sitemap.xml`
    - 404 stránka
    - Breadcrumbs
 
-4. **Obsah**
-   - Zkontroluj délku a kvalitu textu
+3. **Obsah**
+   - Délka a kvalita textu
    - Interní odkazy
-   - Keywords použití
+   - Použití klíčových slov
 
 ### 3. Produkční audit (kompletní)
 
-Pokud testuju produkci, přidej:
-
-1. **Výkon**
-   - Google PageSpeed Insights analýza
-   - Core Web Vitals
-   - Načítací časy
+1. **Výkon (Lighthouse)**
+   ```bash
+   npx lighthouse https://hotelmalina.com \
+     --output=json \
+     --output-path=/tmp/lh-homepage.json \
+     --chrome-flags="--headless --no-sandbox" \
+     --only-categories=performance,seo
+   ```
 
 2. **HTTPS a bezpečnost**
-   - SSL certifikát
+   - SSL certifikát (platnost, redirect HTTP → HTTPS)
    - Security headers
-   - Mixed content
 
-3. **Google nástroje**
-   - Search Console status (pokud máte přístup)
-   - Mobile-friendly test
-   - Rich results test
-
-4. **Indexace**
-   - Zkontroluj indexaci v Google (site: operátor)
+3. **Indexace**
    - robots.txt a sitemap.xml z internetu
+   - Mobile-friendly test
 
 ### 4. Vytvořit report
 
 Na konci vytvoř:
 - Soubor `docs/seo-report-[DATUM].md` s výsledky
 - Seznam nálezů (problémy a doporučení)
-- Prioritizaci úkolů (kritické, důležité, nice-to-have)
+- Prioritizaci (kritické, důležité, nice-to-have)
 
-## Použití:
+## Příkazy pro rychlý audit
 
-Spusť tento command a upřesni:
-1. Jakou URL mám testovat (localhost nebo produkce)
-2. Jestli chci základní nebo podrobný report
-3. Jestli se mám zaměřit na konkrétní oblasti
+```bash
+# Meta tagy homepage
+curl -s http://localhost/ | grep -E "<title>|<meta name"
 
-## Poznámky:
+# Kontrola H1
+curl -s http://localhost/ | grep -oE "<h1[^>]*>[^<]*</h1>"
 
-- Pro produkční test potřebuji fungující doménu
-- Některé testy vyžadují externí nástroje (PageSpeed Insights)
-- SEO audit může trvat 5-10 minut
+# HTTP status kódů
+curl -sI http://localhost/
+curl -sI http://localhost/neexistujici-stranka
+
+# robots.txt
+curl -s http://localhost/robots.txt
+```
+
+## Poznámky
+
+- Pro produkční test potřebuješ fungující doménu
+- SEO audit může trvat 5–10 minut
 - Report obsahuje akční body pro zlepšení
