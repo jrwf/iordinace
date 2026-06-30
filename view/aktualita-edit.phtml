@@ -1,51 +1,58 @@
-<script src="https://cdn.tiny.cloud/1/g3jzocc6gvssfs8oyjmnsprmf5y1hlnhkv3absc3c7aemtoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script type="text/javascript">
-    tinymce.init({
-        selector: "textarea",
-        // selector: "textarea[name=obsah]",
-        menubar: false,
-        plugins: 'lists, code',
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | code | removeformat',
-        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-    });
-</script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <style>
     .btn-save {
         font-size: 16px;
         padding: 10px 25px;
     }
-
-    .form-check-label {
-        font-size: 15px;
-        margin-top: 10px;
-        margin-right: 10px;
+    .note-editor.note-frame {
+        border: 1px solid #ccc;
+        border-radius: 4px;
     }
 </style>
+
 <div class="row">
     <div class="add-form col-md-8 center-block">
         <h1>Úprava aktuality</h1>
         <?php $aktualita = $this->data['aktualita']; ?>
         <form action="" method="post">
             <div class="form-group">
-                <label for="">Nadpis:</label><br/>
-                <input class="form-control" type="text" name="nadpis" value="<?php echo $aktualita['nadpis'] ?>" size="50"/><br/>
+                <label for="nadpis">Nadpis:</label>
+                <input class="form-control" type="text" id="nadpis" name="nadpis" value="<?php echo $aktualita['nadpis'] ?>"/>
             </div>
             <div class="form-group">
-                <label for="">Perex:</label><br/>
-                <textarea class="form-control" name="perex" rows="10" cols="50"><?php echo $aktualita['perex'] ?></textarea><br/>
+                <label for="perex">Perex:</label>
+                <textarea class="form-control" id="perex" name="perex" rows="4"><?php echo $aktualita['perex'] ?></textarea>
             </div>
             <div class="form-group">
-                <label for="">Obsah:</label><br/>
-                <textarea class="form-control" name="obsah" rows="20" cols="50"><?php echo $aktualita['obsah'] ?></textarea><br/>
-            </div>
-            <div class="form-group form-check">
-                <label for="" class="form-check-label">Zveřejnit: </label>
-                <input type="checkbox" name="zobrazit" class="form-check-input" value="ano" />
+                <label for="obsah">Obsah:</label>
+                <textarea id="obsah" name="obsah"><?php echo $aktualita['obsah'] ?></textarea>
             </div>
             <div class="form-group">
-                <input class="btn btn-default btn-save" type="submit" name="ok" value="Uložit" style="float: right"/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="zobrazit" value="ano" <?php echo ($aktualita['zobrazit'] === 'ano') ? 'checked' : '' ?>/> Zveřejnit
+                </label>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-save pull-right" type="submit" name="ok" value="Uložit"/>
             </div>
         </form>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#obsah').summernote({
+        height: 400,
+        toolbar: [
+            ['style',  ['style']],
+            ['font',   ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            ['para',   ['ul', 'ol', 'paragraph']],
+            ['table',  ['table']],
+            ['insert', ['link', 'hr']],
+            ['view',   ['fullscreen', 'codeview']]
+        ],
+        styleTags: ['p', 'h2', 'h3', 'h4']
+    });
+});
+</script>
