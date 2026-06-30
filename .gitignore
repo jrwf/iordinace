@@ -18,3 +18,4 @@ backups/
 
 # Prázdné pomocné adresáře
 claude/
+vendor/

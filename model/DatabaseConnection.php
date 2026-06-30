@@ -7,7 +7,7 @@ class DatabaseConnection
     protected string $username;
     protected string $password;
 
-    public function __construct($host = 'database', $database = 'iordinace', $username = 'root', $password = 'root')
+    public function __construct()
     {
         $this->loadEnvironmentVariables(dirname(__DIR__) . '/.env');
         $environment = getenv('ENVIRONMENT');

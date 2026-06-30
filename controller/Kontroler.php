@@ -19,9 +19,9 @@ abstract class Kontroler
     /**
      * Ošetří proměnnou pro výpis do HTML stránky
      *
-     * @param null $x
+     * @param mixed $x
      */
-    private function osetri($x = null)
+    private function osetri(mixed $x = null)
     {
         if (!isset($x)) {
             return null;
@@ -96,23 +96,6 @@ abstract class Kontroler
         header("Location: /$url");
         header("Connection: close");
         exit;
-    }
-
-    //
-
-    /**
-     * Ověří, zda je přihlášený uživatel, případně přesměruje na login
-     *
-     * @param false $admin
-     */
-    public function overUzivatele($admin = false)
-    {
-        $spravceUzivatelu = new SpravceUzivatelu();
-        $uzivatel = $spravceUzivatelu->vratUzivatele();
-        if (!$uzivatel || ($admin && !$uzivatel['admin'])) {
-            $this->pridejZpravu('Nedostatečná oprávnění.');
-            $this->presmeruj('prihlaseni');
-        }
     }
 
     //

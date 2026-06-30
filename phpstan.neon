@@ -1,0 +1,20 @@
+parameters:
+    level: 5
+    paths:
+        - controller
+        - model
+        - index.php
+    # Všechny třídy se načítají přes vlastní autoloader — bootstrapujeme je ručně
+    bootstrapFiles:
+        - controller/Kontroler.php
+        - model/DatabaseConnection.php
+        - model/Login.php
+        - model/Main.php
+        - model/aktuality.php
+        - model/Navigace.php
+        - model/OdesilacEmailu.php
+    # Nezajímá nás vendor ani cache
+    excludePaths:
+        - vendor
+        - .npm-cache
+        - .composer-cache

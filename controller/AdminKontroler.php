@@ -10,7 +10,7 @@ class AdminKontroler extends Kontroler
         $order = $_POST;
         $aktuality = new aktuality();
 
-        if ($order && is_array($order)) {
+        if ($order) {
             $aktuality->updateAktualitaOrder($order);
         }
 

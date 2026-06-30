@@ -1,0 +1,14 @@
+{
+    "name": "iordinace/web",
+    "description": "iOrdinace - web pediatricke ordinace",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Wolf",
+            "email": "jiri.wolf@jw.cz"
+        }
+    ],
+    "require-dev": {
+        "phpstan/phpstan": "^2.2"
+    }
+}
