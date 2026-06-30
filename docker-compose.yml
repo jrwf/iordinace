@@ -1,17 +1,38 @@
-version: '3.6'
+#version: '3.6'
 services:
   app:
-    image: jrwf/php-8-2-apache:0.0.9
+    build:
+      dockerfile: ./Dockerfile
     container_name: iordinace-app
     ports:
       - "80:80"
+      - "3100:3100"  # Claude Code server port
+      - "9222:9222"  # Chrome remote debugging (MCP, Lighthouse)
     volumes:
       - .:/var/www/html
       - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
       - ./.docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./.docker/claude:/home/www-data  # Volume pro Claude config
+
+      # Host GH config a GH extensions (zajistí, že kontejner uvidí gh + gh-copilot)
+      # Nahraď /home/wolf skutečnou cestou do svého HOME, pokud je jiná.
+      - /home/wolf/.config/gh:/home/www-data/.config/gh
+      - /home/wolf/.local/share/gh:/home/www-data/.local/share/gh  # odstraněno :ro – chown selhal
+
     working_dir: /var/www/html
+    user: "${UID:-1000}:${GID:-1000}"
     environment:
       XDEBUG_MODE: debug
+      PHP_IDE_CONFIG: "serverName=iordinace.loc"
+      NPM_CONFIG_CACHE: "/var/www/html/.npm-cache"
+      COMPOSER_CACHE_DIR: "/var/www/html/.composer-cache"
+      HOME: "/home/www-data"
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /var/www/html/.npm-cache
+        mkdir -p /var/www/html/.composer-cache
+        exec docker-entrypoint.sh apache2-foreground
+      "
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -35,4 +56,3 @@ services:
       - "8080:8080"
     depends_on:
       - database
-
