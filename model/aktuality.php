@@ -10,19 +10,25 @@ class aktuality
      */
     public function vlozitAktualitu(): void
     {
-        $mysql = $this->getSpojeni();
-        if ((isset($_POST['ok']))) {
-            // TODO - ošetřit vstupní data
-            $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
-            $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
-            $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
-            $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
-
-            $mysql->query("UPDATE aktualita SET orders = orders + 1");
-            $mysql->query("insert into aktualita (orders, nadpis, perex, obsah, zobrazit) values (1, '$nadpis', '$perex', '$obsah', '$zobrazit')");
-            header('Location: admin');
-            exit();
+        if (!isset($_POST['ok'])) {
+            return;
         }
+
+        $nadpis  = $_POST['nadpis']  ?? '';
+        $perex   = $_POST['perex']   ?? '';
+        $obsah   = $_POST['obsah']   ?? '';
+        $zobrazit = $_POST['zobrazit'] ?? '';
+
+        $mysql = $this->getSpojeni();
+        $mysql->query("UPDATE aktualita SET orders = orders + 1");
+
+        $stmt = $mysql->prepare("INSERT INTO aktualita (orders, nadpis, perex, obsah, zobrazit) VALUES (1, ?, ?, ?, ?)");
+        $stmt->bind_param('ssss', $nadpis, $perex, $obsah, $zobrazit);
+        $stmt->execute();
+        $stmt->close();
+
+        header('Location: admin');
+        exit();
     }
 
     /**
@@ -31,17 +37,23 @@ class aktuality
      */
     public function updateAktualitu(int $id): void
     {
-        $mysql = $this->getSpojeni();
-        if ((isset($_POST['ok']))) {
-            // TODO - ošetřit vstupní data
-            $nadpis = (isset($_POST['nadpis'])) ? $_POST['nadpis'] : '';
-            $perex = (isset($_POST['perex'])) ? $_POST['perex'] : '';
-            $obsah = (isset($_POST['obsah'])) ? $_POST['obsah'] : '';
-            $zobrazit = (isset($_POST['zobrazit'])) ? $_POST['zobrazit'] : '';
-            $mysql->query("update aktualita set nadpis = '$nadpis', perex = '$perex', obsah = '$obsah', zobrazit = '$zobrazit' where idaktualita = $id");
-            header('Location: admin');
-            exit();
+        if (!isset($_POST['ok'])) {
+            return;
         }
+
+        $nadpis   = $_POST['nadpis']   ?? '';
+        $perex    = $_POST['perex']    ?? '';
+        $obsah    = $_POST['obsah']    ?? '';
+        $zobrazit = $_POST['zobrazit'] ?? '';
+
+        $mysql = $this->getSpojeni();
+        $stmt = $mysql->prepare("UPDATE aktualita SET nadpis = ?, perex = ?, obsah = ?, zobrazit = ? WHERE idaktualita = ?");
+        $stmt->bind_param('ssssi', $nadpis, $perex, $obsah, $zobrazit, $id);
+        $stmt->execute();
+        $stmt->close();
+
+        header('Location: admin');
+        exit();
     }
 
     /**
@@ -52,13 +64,18 @@ class aktuality
      */
     public function updateAktualitaOrder(array $data): void
     {
-        $mysql = $this->getSpojeni(); // TODO - přesunout do constructoru.
+        $mysql = $this->getSpojeni();
         $ids = $data['order'];
         $orders = array_combine(range(1, count($ids)), $ids);
-        foreach ($orders as $id => $poradi) {
+
+        $stmt = $mysql->prepare("UPDATE aktualita SET orders = ? WHERE idaktualita = ?");
+        foreach ($orders as $poradi => $id) {
             $poradi = (int) $poradi;
-            $mysql->query("update aktualita set orders = $id where idaktualita = $poradi");
+            $id     = (int) $id;
+            $stmt->bind_param('ii', $poradi, $id);
+            $stmt->execute();
         }
+        $stmt->close();
     }
 
     /**
@@ -69,15 +86,11 @@ class aktuality
     {
         $mysql = $this->getSpojeni();
         $mysql->set_charset('utf8');
-        $data = $mysql->query("select 
-                                        idaktualita,
-                                        DATE_FORMAT(ts, '%d. %m. %Y') as datum, 
-                                        nadpis, 
-                                        perex, 
-                                        obsah 
-                                        from aktualita 
-                                        where idaktualita = $idaktualita")->fetch_assoc();
-        return $data;
+
+        $stmt = $mysql->prepare("SELECT idaktualita, DATE_FORMAT(ts, '%d. %m. %Y') AS datum, nadpis, perex, obsah FROM aktualita WHERE idaktualita = ?");
+        $stmt->bind_param('i', $idaktualita);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
     }
 
     /**
@@ -91,8 +104,15 @@ class aktuality
     {
         $mysql = $this->getSpojeni();
         try {
-            $limitClause = $limit !== null ? "LIMIT $limit" : '';
-            return $mysql->query("SELECT orders, idaktualita, nadpis, perex, obsah, DATE_FORMAT(created, '%e. %m. %Y') as datum FROM aktualita ORDER BY orders ASC $limitClause")->fetch_all(MYSQLI_ASSOC);
+            $sql = "SELECT orders, idaktualita, nadpis, perex, obsah, DATE_FORMAT(created, '%e. %m. %Y') AS datum FROM aktualita ORDER BY orders ASC";
+            if ($limit !== null) {
+                $stmt = $mysql->prepare($sql . " LIMIT ?");
+                $stmt->bind_param('i', $limit);
+            } else {
+                $stmt = $mysql->prepare($sql);
+            }
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
             throw new Exception('Chyba při získávání seznamu aktualit - ' . $e->getMessage());
         }
@@ -105,7 +125,10 @@ class aktuality
     public function detailAktuality(int $id): false|array|null
     {
         $mysql = $this->getSpojeni();
-        return $mysql->query("select * from aktualita where idaktualita = $id")->fetch_assoc();
+        $stmt = $mysql->prepare("SELECT * FROM aktualita WHERE idaktualita = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
     }
 
     /**
@@ -115,7 +138,10 @@ class aktuality
     public function smazatAktualitu(int $id): void
     {
         $mysql = $this->getSpojeni();
-        $mysql->query("delete from aktualita where idaktualita = $id");
+        $stmt = $mysql->prepare("DELETE FROM aktualita WHERE idaktualita = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt->close();
     }
 
     /**
@@ -124,7 +150,6 @@ class aktuality
     public function getSpojeni(): ?mysqli
     {
         $db = new \DatabaseConnection();
-        $mysql = $db->spojeni();
-        return $mysql;
+        return $db->spojeni();
     }
 }
