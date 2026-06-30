@@ -100,7 +100,17 @@
       "Bash(cp /tmp/TurbojetTechnologies-colorbox-b8c1867/package.json /var/www/html/web/libraries/colorbox/package.json)",
       "Bash(composer update *)",
       "Bash(sort -t: -k2)",
-      "Bash(mysql *)"
+      "Bash(mysql *)",
+      "Bash(composer --version)",
+      "Bash(XDEBUG_MODE=off composer init *)",
+      "Bash(XDEBUG_MODE=off composer require *)",
+      "Bash(XDEBUG_MODE=off vendor/bin/phpstan analyse *)",
+      "Bash(pip3 show *)",
+      "Bash(pip3 install *)",
+      "Bash(chmod +x /tmp/git-filter-repo)",
+      "Bash(/tmp/git-filter-repo --version)",
+      "Bash(/tmp/git-filter-repo *)",
+      "Bash(gh auth *)"
     ],
     "deny": [],
     "ask": []
