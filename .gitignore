@@ -5,3 +5,16 @@
 
 .env
 config.php
+
+# Cache adresáře (Docker volumes)
+.npm-cache/
+.composer-cache/
+
+# Zálohy databáze
+backups/
+
+# IDE a nástroje
+.qodo/
+
+# Prázdné pomocné adresáře
+claude/
